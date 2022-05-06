@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { Card, WhiteSpace, WingBlank } from '../../'
+import { Card, WhiteSpace, WingBlank } from '@ant-design/react-native'
 
 export default class BasicCardExample extends React.Component<any, any> {
   render() {

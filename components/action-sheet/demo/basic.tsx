@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Platform } from 'react-native'
-import { ActionSheet, Button } from '../../'
+import { ActionSheet, Button } from '@ant-design/react-native'
 
 export default class Test extends React.Component<any, any> {
   constructor(props: any) {

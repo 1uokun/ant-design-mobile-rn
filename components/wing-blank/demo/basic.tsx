@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { WhiteSpace, WingBlank } from '../../'
+import { WhiteSpace, WingBlank } from '@ant-design/react-native'
 
 const PlaceHolder = (props: any) => (
   <View

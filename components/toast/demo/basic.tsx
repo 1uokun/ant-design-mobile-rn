@@ -1,7 +1,14 @@
 /* tslint:disable:no-console */
 import React from 'react'
 import { DeviceEventEmitter, Text } from 'react-native'
-import { Button, List, Switch, Toast, WhiteSpace, WingBlank } from '../../'
+import {
+  Button,
+  List,
+  Switch,
+  Toast,
+  WhiteSpace,
+  WingBlank,
+} from '@ant-design/react-native'
 
 function showToastStack() {
   // multiple toast

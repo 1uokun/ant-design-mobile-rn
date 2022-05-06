@@ -4,7 +4,7 @@ import {
 } from '@ant-design/icons-react-native/lib/outline'
 import React from 'react'
 import { ScrollView } from 'react-native'
-import { Grid, Icon, SearchBar } from '../../'
+import { Grid, Icon, SearchBar } from '@ant-design/react-native'
 const data = Object.keys(outlineGlyphMap).map((item: OutlineGlyphMapType) => ({
   icon: <Icon name={item} />,
   text: item,

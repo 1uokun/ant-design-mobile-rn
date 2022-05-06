@@ -2,7 +2,7 @@ const data = require('./data.json')
 import { district } from 'antd-mobile-demo-data'
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
-import { List, Picker } from '../../'
+import { List, Picker } from '@ant-design/react-native'
 
 const CustomChildren = (props: any) => (
   <TouchableOpacity onPress={props.onPress}>

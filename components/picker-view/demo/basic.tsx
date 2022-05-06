@@ -1,5 +1,5 @@
 import React from 'react'
-import { PickerView } from '../../'
+import { PickerView } from '@ant-design/react-native'
 
 const seasons = [
   [

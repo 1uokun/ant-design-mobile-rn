@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import React from 'react'
-import { Button, WhiteSpace, WingBlank } from '../../'
+import { Button, WhiteSpace, WingBlank } from '@ant-design/react-native'
 
 /* tslint:disable:no-console */
 export default () => (

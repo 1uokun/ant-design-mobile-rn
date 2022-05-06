@@ -1,7 +1,7 @@
 // tslint:disable:no-empty
 import React from 'react'
 import { Image, ScrollView, View } from 'react-native'
-import { List } from '../../'
+import { List } from '@ant-design/react-native'
 
 const Item = List.Item
 const Brief = Item.Brief

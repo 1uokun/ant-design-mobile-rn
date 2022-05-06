@@ -1,7 +1,7 @@
 /* tslint:disable:no-console */
 import React from 'react'
 import { Image, Text, View } from 'react-native'
-import { NoticeBar, WhiteSpace } from '../../'
+import { NoticeBar, WhiteSpace } from '@ant-design/react-native'
 
 export default class NoticeBarExample extends React.Component<any, any> {
   render() {

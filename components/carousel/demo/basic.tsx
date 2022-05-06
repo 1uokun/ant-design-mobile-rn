@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
-import { Button, Carousel } from '../../'
+import { Button, Carousel } from '@ant-design/react-native'
 
 export default class BasicCarouselExample extends React.Component<any, any> {
   carousel: null | Carousel

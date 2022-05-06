@@ -1,7 +1,7 @@
 /* tslint:disable:no-console */
 import React from 'react'
 import { Text, View } from 'react-native'
-import { DatePickerView } from '../../'
+import { DatePickerView } from '@ant-design/react-native'
 
 export default class DatePickerViewExample extends React.Component {
   state = {

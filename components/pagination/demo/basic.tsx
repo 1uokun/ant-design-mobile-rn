@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pagination, WhiteSpace, WingBlank } from '../../'
+import { Pagination, WhiteSpace, WingBlank } from '@ant-design/react-native'
 
 const locale = {
   prevText: '上一步',

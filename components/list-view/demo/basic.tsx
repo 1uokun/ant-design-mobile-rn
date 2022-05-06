@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { ListView } from '../../'
+import { ListView } from '@ant-design/react-native'
 
 export default class BasicListExample extends React.Component<any, any> {
   state = {

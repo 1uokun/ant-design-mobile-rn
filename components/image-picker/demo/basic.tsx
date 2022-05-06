@@ -1,6 +1,6 @@
 import React from 'react'
 import { PermissionsAndroid, Platform, Text, View } from 'react-native'
-import { ImagePicker, WhiteSpace } from '../../'
+import { ImagePicker, WhiteSpace } from '@ant-design/react-native'
 
 export default class ImagePickerExample extends React.Component<any, any> {
   constructor(props: any) {

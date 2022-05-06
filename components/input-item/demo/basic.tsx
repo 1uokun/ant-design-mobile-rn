@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, Text } from 'react-native'
-import { Button, InputItem, List } from '../../'
+import { Button, InputItem, List } from '@ant-design/react-native'
 
 declare var jest: any
 

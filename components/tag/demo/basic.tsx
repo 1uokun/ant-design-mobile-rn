@@ -1,7 +1,7 @@
 /* tslint:disable:no-console */
 import React from 'react'
 import { View } from 'react-native'
-import { Tag, WhiteSpace } from '../../'
+import { Tag, WhiteSpace } from '@ant-design/react-native'
 
 function onChange(selected: any) {
   console.log(`tag selected: ${selected}`)

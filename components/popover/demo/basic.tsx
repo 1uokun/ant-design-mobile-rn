@@ -1,6 +1,6 @@
 import React from 'react'
 import { Easing, StyleSheet, Text, View } from 'react-native'
-import { List, Popover } from '../../'
+import { List, Popover } from '@ant-design/react-native'
 
 const Item = Popover.Item
 
