@@ -1,7 +1,6 @@
 /* tslint:disable:no-console */
 import React from 'react'
-import { View } from 'react-native'
-import { DatePicker, List } from '@ant-design/react-native'
+import { DatePicker, List, Provider } from '@ant-design/react-native'
 
 // const now = new Date();
 
@@ -19,7 +18,7 @@ export default class PopupExample extends React.Component<any, any> {
 
   render() {
     return (
-      <View>
+      <Provider>
         <List>
           <DatePicker
             value={this.state.value}
@@ -32,7 +31,7 @@ export default class PopupExample extends React.Component<any, any> {
             <List.Item arrow="horizontal">Select Date</List.Item>
           </DatePicker>
         </List>
-      </View>
+      </Provider>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, ViewStyle } from 'react-native'
+import { Text, View } from 'react-native'
 import { Button, Progress, WhiteSpace } from '@ant-design/react-native'
 
 export default class BasicProgressExample extends React.Component<any, any> {
@@ -29,7 +29,7 @@ export default class BasicProgressExample extends React.Component<any, any> {
       <View>
         <Progress percent={90} position="fixed" />
 
-        <View style={[style as ViewStyle]}>
+        <View style={[style]}>
           <View style={{ marginRight: 10, height: 4, flex: 1 }}>
             <Progress percent={this.state.percent} />
           </View>

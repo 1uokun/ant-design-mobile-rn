@@ -95,7 +95,7 @@ export default class PopoverExample extends React.Component<any, any> {
                   <Text>自定义组件 {p}</Text>
                 </Popover.Item>
               }
-              placement={p as any}>
+              placement={p}>
               <Text
                 style={{
                   margin: 16,
@@ -109,7 +109,7 @@ export default class PopoverExample extends React.Component<any, any> {
     )
   }
 
-  private renderList(overlay: React.ReactNode[], key: number) {
+  renderList(overlay: React.ReactNode[], key: number) {
     return (
       <List.Item
         key={key}

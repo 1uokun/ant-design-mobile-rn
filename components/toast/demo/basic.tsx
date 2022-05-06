@@ -2,6 +2,7 @@
 import React from 'react'
 import { DeviceEventEmitter, Text } from 'react-native'
 import {
+  Provider,
   Button,
   List,
   Switch,
@@ -111,58 +112,60 @@ export default class ToastExample extends React.Component<any, any> {
 
   render() {
     return (
-      <WingBlank style={{ marginTop: 20 }}>
-        <List>
-          <List.Item
-            extra={
-              <Switch
-                checked={this.state.enableMask}
-                onChange={(mask) => {
-                  Toast.config({ mask })
-                  this.setState({ enableMask: Toast.getConfig().mask })
-                }}
-              />
-            }>
-            Enable Mask
-          </List.Item>
-          <List.Item
-            extra={
-              <Switch
-                checked={this.state.enableStack}
-                onChange={(stackable) => {
-                  Toast.config({ stackable })
-                  this.setState({ enableStack: Toast.getConfig().stackable })
-                }}
-              />
-            }>
-            Enable Stack
-          </List.Item>
-        </List>
-        <WhiteSpace />
-        <Button onPress={showToastNoMask}>Without mask</Button>
-        <WhiteSpace />
-        <Button onPress={showToastStack}>Stackable toast</Button>
-        <WhiteSpace />
-        <Button onPress={infoToast}>Text toast</Button>
-        <WhiteSpace />
-        <Button onPress={successToast}>Success toast</Button>
-        <WhiteSpace />
-        <Button onPress={failToast}>Failed toast</Button>
-        <WhiteSpace />
-        <Button onPress={offline}>Network failure toast</Button>
-        <WhiteSpace />
-        <Button onPress={loadingToast}>Loading toast</Button>
-        <WhiteSpace />
-        <Button onPress={alwaysShowToastInfo}>
-          Toast.info with duration = 0
-        </Button>
-        <WhiteSpace />
-        <Button onPress={alwaysShowToastLoading}>
-          Toast.loading with duration = 0
-        </Button>
-        <WhiteSpace />
-        <Button onPress={showCustomViewToast}>Toast with custom view</Button>
-      </WingBlank>
+      <Provider>
+        <WingBlank style={{ marginTop: 20 }}>
+          <List>
+            <List.Item
+              extra={
+                <Switch
+                  checked={this.state.enableMask}
+                  onChange={(mask) => {
+                    Toast.config({ mask })
+                    this.setState({ enableMask: Toast.getConfig().mask })
+                  }}
+                />
+              }>
+              Enable Mask
+            </List.Item>
+            <List.Item
+              extra={
+                <Switch
+                  checked={this.state.enableStack}
+                  onChange={(stackable: any) => {
+                    Toast.config({ stackable })
+                    this.setState({ enableStack: Toast.getConfig().stackable })
+                  }}
+                />
+              }>
+              Enable Stack
+            </List.Item>
+          </List>
+          <WhiteSpace />
+          <Button onPress={showToastNoMask}>Without mask</Button>
+          <WhiteSpace />
+          <Button onPress={showToastStack}>Stackable toast</Button>
+          <WhiteSpace />
+          <Button onPress={infoToast}>Text toast</Button>
+          <WhiteSpace />
+          <Button onPress={successToast}>Success toast</Button>
+          <WhiteSpace />
+          <Button onPress={failToast}>Failed toast</Button>
+          <WhiteSpace />
+          <Button onPress={offline}>Network failure toast</Button>
+          <WhiteSpace />
+          <Button onPress={loadingToast}>Loading toast</Button>
+          <WhiteSpace />
+          <Button onPress={alwaysShowToastInfo}>
+            Toast.info with duration = 0
+          </Button>
+          <WhiteSpace />
+          <Button onPress={alwaysShowToastLoading}>
+            Toast.loading with duration = 0
+          </Button>
+          <WhiteSpace />
+          <Button onPress={showCustomViewToast}>Toast with custom view</Button>
+        </WingBlank>
+      </Provider>
     )
   }
 }

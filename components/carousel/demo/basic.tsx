@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { Button, Carousel } from '@ant-design/react-native'
 
 export default class BasicCarouselExample extends React.Component<any, any> {
@@ -106,12 +106,7 @@ export default class BasicCarouselExample extends React.Component<any, any> {
   }
 }
 
-const styles = StyleSheet.create<{
-  wrapper: ViewStyle
-  containerHorizontal: ViewStyle
-  containerVertical: ViewStyle
-  text: TextStyle
-}>({
+const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#fff',
     width: '100%',

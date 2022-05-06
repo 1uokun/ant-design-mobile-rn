@@ -1,8 +1,7 @@
 /* tslint:disable:no-console */
 import React from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
-import Tabs from '..'
-
+import { Tabs } from '@ant-design/react-native'
 const renderContent = (tab: any, index: any) => {
   const style = {
     paddingVertical: 40,
@@ -10,7 +9,7 @@ const renderContent = (tab: any, index: any) => {
     alignItems: 'center',
     margin: 10,
     backgroundColor: '#ddd',
-  } as any
+  }
   const content = [1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
     return (
       <View key={`${index}_${i}`} style={style}>
@@ -50,7 +49,7 @@ export default class BasicTabsExample extends React.Component<any, any> {
       justifyContent: 'center',
       height: 150,
       backgroundColor: '#fff',
-    } as any
+    }
     return (
       <View style={{ flex: 1 }}>
         <Tabs tabs={tabs}>
