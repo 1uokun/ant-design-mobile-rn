@@ -17,7 +17,10 @@ export default class ResultExample extends React.Component<any, any> {
 
         <Text style={{ margin: 10, color: '#999' }}>Image source</Text>
         <Result
-          imgUrl={require('./alipay.png')}
+          // imgUrl={require('./alipay.png')}
+          imgUrl={{
+            uri: 'https://raw.githubusercontent.com/ant-design/ant-design-mobile-rn/master/components/result/demo/alipay.png',
+          }}
           title="验证成功"
           message="所提交内容已成功完成验证"
         />
@@ -26,7 +29,10 @@ export default class ResultExample extends React.Component<any, any> {
         <Result
           img={
             <Image
-              source={require('./alipay.png')}
+              // source={require('./alipay.png')}
+              source={{
+                uri: 'https://raw.githubusercontent.com/ant-design/ant-design-mobile-rn/master/components/result/demo/alipay.png',
+              }}
               style={{ width: 60, height: 60 }}
             />
           }
@@ -38,7 +44,10 @@ export default class ResultExample extends React.Component<any, any> {
         <Result
           img={
             <Image
-              source={require('./alipay.png')}
+              // source={require('./alipay.png')}
+              source={{
+                uri: 'https://raw.githubusercontent.com/ant-design/ant-design-mobile-rn/master/components/result/demo/alipay.png',
+              }}
               style={{ width: 60, height: 60 }}
             />
           }

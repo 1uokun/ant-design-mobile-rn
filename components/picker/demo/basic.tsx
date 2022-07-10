@@ -1,4 +1,4 @@
-const data = require('./data.json')
+const data = require('@bang88/china-city-data')
 import { district } from 'antd-mobile-demo-data'
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'

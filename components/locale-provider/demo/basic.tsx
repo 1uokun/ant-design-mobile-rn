@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
-import LocaleProvider from '..'
 import {
+  Provider,
   DatePicker,
   List,
   Pagination,
@@ -9,12 +9,12 @@ import {
   SearchBar,
   WhiteSpace,
   WingBlank,
-} from '../../'
-import enUS from '../en_US'
-import esES from '../es_ES'
-import ptBR from '../pt_BR'
-import ruRU from '../ru_RU'
-import zhCN from '../zh_CN'
+} from '@ant-design/react-native'
+import enUS from '@ant-design/react-native/lib/locale-provider/en_US'
+import esES from '@ant-design/react-native/lib/locale-provider/es_ES'
+import ruRU from '@ant-design/react-native/lib/locale-provider/ru_RU'
+import zhCN from '@ant-design/react-native/lib/locale-provider/zh_CN'
+import ptBR from '@ant-design/react-native/lib/locale-provider/pt_BR'
 
 const maxDate = new Date(2018, 11, 3, 22, 0)
 const minDate = new Date(2015, 7, 6, 8, 30)
@@ -120,9 +120,9 @@ export default class LocaleProviderExample extends React.Component<any, any> {
           <List.Item arrow="horizontal">Choose language</List.Item>
         </Picker>
         <WhiteSpace />
-        <LocaleProvider locale={currentLocale}>
+        <Provider locale={currentLocale}>
           <Page />
-        </LocaleProvider>
+        </Provider>
       </WingBlank>
     )
   }
