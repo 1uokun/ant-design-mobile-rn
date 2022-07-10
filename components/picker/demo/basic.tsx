@@ -1,8 +1,8 @@
 const data = require('@bang88/china-city-data')
+import { List, Picker, Provider } from '@ant-design/react-native'
 import { district } from 'antd-mobile-demo-data'
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
-import { List, Picker } from '@ant-design/react-native'
 
 const CustomChildren = (props: any) => (
   <TouchableOpacity onPress={props.onPress}>
@@ -42,35 +42,37 @@ export default class PopupExample extends React.Component<any, any> {
   }
   render() {
     return (
-      <View style={{ marginTop: 30 }}>
-        <List>
-          <Picker
-            data={data}
-            cols={3}
-            value={this.state.value}
-            onChange={this.onChange}>
-            <List.Item arrow="horizontal">省市选择</List.Item>
-          </Picker>
-          <Picker
-            data={this.state.data}
-            cols={2}
-            value={this.state.value}
-            onChange={this.onChange}>
-            <List.Item arrow="horizontal" onPress={this.onPress}>
-              省市选择(异步加载)
-            </List.Item>
-          </Picker>
-          <Picker
-            title="选择地区"
-            data={district}
-            cols={2}
-            value={this.state.pickerValue}
-            onChange={(v: any) => this.setState({ pickerValue: v })}
-            onOk={(v: any) => this.setState({ pickerValue: v })}>
-            <CustomChildren>Customized children</CustomChildren>
-          </Picker>
-        </List>
-      </View>
+      <Provider>
+        <View style={{ marginTop: 30 }}>
+          <List>
+            <Picker
+              data={data}
+              cols={3}
+              value={this.state.value}
+              onChange={this.onChange}>
+              <List.Item arrow="horizontal">省市选择</List.Item>
+            </Picker>
+            <Picker
+              data={this.state.data}
+              cols={2}
+              value={this.state.value}
+              onChange={this.onChange}>
+              <List.Item arrow="horizontal" onPress={this.onPress}>
+                省市选择(异步加载)
+              </List.Item>
+            </Picker>
+            <Picker
+              title="选择地区"
+              data={district}
+              cols={2}
+              value={this.state.pickerValue}
+              onChange={(v: any) => this.setState({ pickerValue: v })}
+              onOk={(v: any) => this.setState({ pickerValue: v })}>
+              <CustomChildren>Customized children</CustomChildren>
+            </Picker>
+          </List>
+        </View>
+      </Provider>
     )
   }
 }
