@@ -1,25 +1,26 @@
 {
   "files": {
-    "app.js": "/static/js/app.67432b07.chunk.js",
-    "app.js.map": "/static/js/app.67432b07.chunk.js.map",
-    "runtime~app.js": "/static/js/runtime~app.30b509be.js",
-    "runtime~app.js.map": "/static/js/runtime~app.30b509be.js.map",
-    "static/js/2.329056a3.chunk.js": "/static/js/2.329056a3.chunk.js",
-    "static/js/2.329056a3.chunk.js.map": "/static/js/2.329056a3.chunk.js.map",
-    "fonts/antoutline.ttf": "/./fonts/antoutline.ttf",
-    "favicon-16.png": "/favicon-16.png",
-    "favicon-32.png": "/favicon-32.png",
-    "favicon.ico": "/favicon.ico",
-    "index.html": "/index.html",
-    "manifest.json": "/manifest.json",
-    "serve.json": "/serve.json",
-    "static/js/2.329056a3.chunk.js.LICENSE.txt": "/static/js/2.329056a3.chunk.js.LICENSE.txt",
-    "static/media/alipay.png": "/static/media/alipay.94e09c6c.png",
-    "static/media/downArrow.png": "/static/media/downArrow.b5790324.png"
+    "app.js": "/ant-design-mobile-rn/static/js/app.96ce7ed4.chunk.js",
+    "app.js.map": "/ant-design-mobile-rn/static/js/app.96ce7ed4.chunk.js.map",
+    "runtime~app.js": "/ant-design-mobile-rn/static/js/runtime~app.9aa5bb41.js",
+    "runtime~app.js.map": "/ant-design-mobile-rn/static/js/runtime~app.9aa5bb41.js.map",
+    "static/js/2.ec74ce80.chunk.js": "/ant-design-mobile-rn/static/js/2.ec74ce80.chunk.js",
+    "static/js/2.ec74ce80.chunk.js.map": "/ant-design-mobile-rn/static/js/2.ec74ce80.chunk.js.map",
+    "favicon-16.png": "/ant-design-mobile-rn/favicon-16.png",
+    "favicon-32.png": "/ant-design-mobile-rn/favicon-32.png",
+    "favicon.ico": "/ant-design-mobile-rn/favicon.ico",
+    "index.html": "/ant-design-mobile-rn/index.html",
+    "manifest.json": "/ant-design-mobile-rn/manifest.json",
+    "serve.json": "/ant-design-mobile-rn/serve.json",
+    "static/js/2.ec74ce80.chunk.js.LICENSE.txt": "/ant-design-mobile-rn/static/js/2.ec74ce80.chunk.js.LICENSE.txt",
+    "static/media/alipay.png": "/ant-design-mobile-rn/static/media/alipay.94e09c6c.png",
+    "static/media/antfill.ttf": "/ant-design-mobile-rn/static/media/antfill.c49c37a5.ttf",
+    "static/media/antoutline.ttf": "/ant-design-mobile-rn/static/media/antoutline.87cd7238.ttf",
+    "static/media/downArrow.png": "/ant-design-mobile-rn/static/media/downArrow.b5790324.png"
   },
   "entrypoints": [
-    "static/js/runtime~app.30b509be.js",
-    "static/js/2.329056a3.chunk.js",
-    "static/js/app.67432b07.chunk.js"
+    "static/js/runtime~app.9aa5bb41.js",
+    "static/js/2.ec74ce80.chunk.js",
+    "static/js/app.96ce7ed4.chunk.js"
   ]
 }

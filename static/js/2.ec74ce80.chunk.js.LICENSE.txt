@@ -17,6 +17,8 @@ object-assign
  * Copyright (c) hammerjs
  * Licensed under the MIT license */
 
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
 /**
  * Checks if two values are equal. Values may be primitives, arrays, or objects.
  * Returns true if both arguments have the same keys and values.
