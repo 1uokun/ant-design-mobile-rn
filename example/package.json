@@ -13,6 +13,7 @@
     "eject": "expo eject",
     "build:web": "expo build:web --config ./app.web-build.json",
     "deploy": "gh-pages -d web-build",
+    "publish": "expo publish",
     "prettify": "prettier --write .  --config ./.prettierrc",
     "lint": "eslint --ext js,ts,tsx ."
   },
