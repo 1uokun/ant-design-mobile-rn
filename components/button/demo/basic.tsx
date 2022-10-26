@@ -1,7 +1,6 @@
 /* tslint:disable:no-unused-variable */
-
 import React from 'react'
-import { Button, WhiteSpace, WingBlank } from '@ant-design/react-native'
+import { Button, Icon, WhiteSpace, WingBlank } from '@ant-design/react-native'
 
 /* tslint:disable:no-console */
 export default () => (
@@ -50,5 +49,10 @@ export default () => (
         ghost
       </Button>
     </WingBlank>
+    <WhiteSpace />
+
+    <Button type="primary">
+      <Icon name="login" />
+    </Button>
   </WingBlank>
 )
