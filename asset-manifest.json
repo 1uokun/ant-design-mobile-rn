@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/ant-design-mobile-rn/static/js/app.96ce7ed4.chunk.js",
-    "app.js.map": "/ant-design-mobile-rn/static/js/app.96ce7ed4.chunk.js.map",
+    "app.js": "/ant-design-mobile-rn/static/js/app.2f35084c.chunk.js",
+    "app.js.map": "/ant-design-mobile-rn/static/js/app.2f35084c.chunk.js.map",
     "runtime~app.js": "/ant-design-mobile-rn/static/js/runtime~app.9aa5bb41.js",
     "runtime~app.js.map": "/ant-design-mobile-rn/static/js/runtime~app.9aa5bb41.js.map",
     "static/js/2.ec74ce80.chunk.js": "/ant-design-mobile-rn/static/js/2.ec74ce80.chunk.js",
@@ -21,6 +21,6 @@
   "entrypoints": [
     "static/js/runtime~app.9aa5bb41.js",
     "static/js/2.ec74ce80.chunk.js",
-    "static/js/app.96ce7ed4.chunk.js"
+    "static/js/app.2f35084c.chunk.js"
   ]
 }
