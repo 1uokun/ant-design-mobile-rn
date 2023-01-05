@@ -1,9 +1,9 @@
 /* eslint no-console:0 */
 import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
-import { List, SearchBar } from '../../components'
+import List from '../../components/list'
+import SearchBar from '../../components/search-bar'
 import { OTHERS, UIBARS, UICONTROLS, UIVIEWS } from '../demoList'
-import Theme from './Theme'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,10 +12,6 @@ const styles = StyleSheet.create({
 })
 
 export default class RnIndex extends React.Component {
-  static navigationOptions = ({ screenProps }) => ({
-    headerLeft: <Theme {...screenProps} />,
-  })
-
   constructor(props) {
     super(props)
     this.state = {
