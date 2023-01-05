@@ -12,7 +12,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "export": "expo export",
-    "deploy": "gh-pages -d web-build",
+    "deploy": "gh-pages -d dist",
     "publish": "expo publish",
     "prettify": "prettier --write .  --config ./.prettierrc",
     "lint": "eslint --ext js,ts,tsx ."
@@ -24,6 +24,7 @@
     "expo-font": "~11.0.1",
     "expo-splash-screen": "~0.17.4",
     "expo-updates": "~0.15.6",
+    "gh-pages": "^4.0.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
