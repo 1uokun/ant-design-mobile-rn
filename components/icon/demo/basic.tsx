@@ -2,9 +2,11 @@ import {
   outlineGlyphMap,
   OutlineGlyphMapType,
 } from '@ant-design/icons-react-native/lib/outline'
+import { Grid, Icon, SearchBar, Text } from '@ant-design/react-native'
+import { loadAsync } from 'expo-font'
 import React from 'react'
 import { ScrollView } from 'react-native'
-import { Grid, Icon, SearchBar } from '@ant-design/react-native'
+
 const data = Object.keys(outlineGlyphMap).map((item: OutlineGlyphMapType) => ({
   icon: <Icon name={item} />,
   text: item,
@@ -12,8 +14,25 @@ const data = Object.keys(outlineGlyphMap).map((item: OutlineGlyphMapType) => ({
 export default class IConDemo extends React.Component<any, any> {
   state = {
     data,
+    fontLoaded: false,
   }
+
+  async componentDidMount() {
+    await this._loadAssets()
+  }
+
+  async _loadAssets() {
+    await loadAsync({
+      antoutline: require('@ant-design/icons-react-native/fonts/antoutline.ttf'),
+      antfill: require('@ant-design/icons-react-native/fonts/antfill.ttf'),
+    })
+    this.setState({ fontLoaded: true })
+  }
+
   render() {
+    if (!this.state.fontLoaded) {
+      return <Text>'字体加载中...'</Text>
+    }
     return (
       <ScrollView>
         <SearchBar
