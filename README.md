@@ -1,3 +1,7 @@
+> fork分支说明
+> - master 是打包h5代码到github.io用的
+> - feature-snack-doc 是给官网提供演示代码用的
+
 English | [简体中文](./README.zh-CN.md)
 
 <p align="center">
