@@ -14,7 +14,7 @@
       "**/*"
     ],
     "experiments": {
-      "baseUrl": "https://1uokun.github.io/ant-design-mobile-rn/"
+      "baseUrl": "/ant-design-mobile-rn"
     },
     "web": {
       "bundler": "metro",
