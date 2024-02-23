@@ -25,19 +25,7 @@ exports[`renders ./components/grid/demo/basic.tsx correctly 1`] = `
         ]
       }
     >
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "column",
-              "flexWrap": "nowrap",
-              "justifyContent": "flex-start",
-            },
-            undefined,
-          ]
-        }
-      >
+      <View>
         <View
           style={
             Array [
@@ -931,6 +919,7 @@ exports[`renders ./components/grid/demo/basic.tsx correctly 1`] = `
         automaticallyAdjustContentInsets={false}
         autoplay={false}
         autoplayInterval={3000}
+        collapsable={false}
         contentOffset={
           Object {
             "x": 0,
@@ -943,6 +932,8 @@ exports[`renders ./components/grid/demo/basic.tsx correctly 1`] = `
         dots={true}
         horizontal={true}
         infinite={false}
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
         onMomentumScrollEnd={[Function]}
         onScrollBeginDrag={[Function]}
         onScrollEndDrag={[Function]}
@@ -1982,19 +1973,7 @@ exports[`renders ./components/grid/demo/basic.tsx correctly 1`] = `
         Custom GridCell Style
       </Text>
     </View>
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "column",
-            "flexWrap": "nowrap",
-            "justifyContent": "flex-start",
-          },
-          undefined,
-        ]
-      }
-    >
+    <View>
       <View
         style={
           Array [

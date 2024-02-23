@@ -1,8 +1,10 @@
 const data = require('@bang88/china-city-data')
-import { List, Picker, Provider } from '@ant-design/react-native'
+import { Button, List, Picker, Provider } from '@ant-design/react-native'
+import { PickerValue, PickerValueExtend } from '@ant-design/react-native/es/picker-view/PropsType'
 import { district } from 'antd-mobile-demo-data'
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
+
 
 const CustomChildren = (props: any) => (
   <TouchableOpacity onPress={props.onPress}>
@@ -20,6 +22,52 @@ const CustomChildren = (props: any) => (
     </View>
   </TouchableOpacity>
 )
+
+// visible用法
+function BasicDemo() {
+  const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState<any[]>([])
+  const [extend, setExtend] = useState<any>()
+  return (
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        paddingVertical: 5,
+        paddingLeft: 16,
+      }}>
+      <Button
+        type="primary"
+        onPress={() => {
+          setVisible(true)
+        }}>
+        选择
+      </Button>
+
+      {/* extend渲染所选值 */}
+      <Text>
+        {extend?.items?.map((item: any) => item.label).join(',') || ' 未选择'}
+      </Text>
+
+      {/* visible控制显示/隐藏 */}
+      <Picker
+        data={data}
+        cols={3}
+        onChange={setValue}
+        onClose={() => {
+          setVisible(false)
+        }}
+        visible={visible}
+        value={value}
+        onOk={(v: PickerValue[], ext: PickerValueExtend) => {
+          setValue(v)
+          setExtend(ext)
+        }}
+      />
+    </View>
+  )
+}
 
 export default class PopupExample extends React.Component<any, any> {
   constructor(props: any) {
@@ -40,12 +88,15 @@ export default class PopupExample extends React.Component<any, any> {
   onChange = (value: any) => {
     this.setState({ value })
   }
+
   render() {
     return (
       <Provider>
-        <View style={{ marginTop: 30 }}>
+        <View>
+          <Text style={{ margin: 16 }}>List Children</Text>
           <List>
             <Picker
+              visible={this.state.visible}
               data={data}
               cols={3}
               value={this.state.value}
@@ -71,6 +122,8 @@ export default class PopupExample extends React.Component<any, any> {
               <CustomChildren>Customized children</CustomChildren>
             </Picker>
           </List>
+          <Text style={{ margin: 16 }}>visible 控制显示/隐藏</Text>
+          <BasicDemo />
         </View>
       </Provider>
     )

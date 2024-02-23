@@ -15,6 +15,9 @@ import esES from '@ant-design/react-native/lib/locale-provider/es_ES'
 import ptBR from '@ant-design/react-native/lib/locale-provider/pt_BR'
 import ruRU from '@ant-design/react-native/lib/locale-provider/ru_RU'
 import zhCN from '@ant-design/react-native/lib/locale-provider/zh_CN'
+import faIR from '@ant-design/react-native/lib/locale-provider/fa_IR'
+import koKR from '@ant-design/react-native/lib/locale-provider/ko_KR'
+import svSE from '@ant-design/react-native/lib/locale-provider/sv_SE'
 
 const maxDate = new Date(2018, 11, 3, 22, 0)
 const minDate = new Date(2015, 7, 6, 8, 30)
@@ -104,6 +107,21 @@ export default class LocaleProviderExample extends React.Component<any, any> {
         value: 'Português - BR',
         label: 'Português - BR',
         language: ptBR,
+      },
+      {
+        value: 'Sverige',
+        label: 'Sverige',
+        language: svSE,
+      },
+      {
+        value: 'Persian',
+        label: 'Persian',
+        language: faIR,
+      },
+      {
+        value: '한국',
+        label: '한국',
+        language: koKR,
       },
     ]
     const currentLocale = languages.find(

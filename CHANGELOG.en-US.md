@@ -14,6 +14,29 @@ toc: false
 
 ---
 
+### 5.1.0
+`2024-02-20`
+- Refactor **Picker** & **PickerView**
+  - 🔥 Remove dependence `@react-native-picker/picker`
+  - 💄 Refactor extends by `ScrollView {snapToInterval}` to support web
+  - 🆕 Refactor `itemStyle` prop, make styles more flexible [#1311](https://github.com/ant-design/ant-design-mobile-rn/issues/1311) [#1316](https://github.com/ant-design/ant-design-mobile-rn/issues/1316)
+  - 🆕 Picker support (`visible`) new prop
+- Refactor **DatePicker** & **DatePickerView**
+  - 💄 **Style** 和 **Base Props** extends by Picker & PickerView
+  - 🆕 Support (`precision` `filter` ) new props
+  - ⚡️ Deprecated (<del>`mode`</del>）prop; date format by [Day.js](https://day.js.org/docs/en/parse/string-format)
+- ❗️Delete **ImagePicker** and remove dependence `@react-native-camera-roll/camera-roll`
+- **Switch**
+  - fix: `checked` prop support controlled mode [#1325](https://github.com/ant-design/ant-design-mobile-rn/issues/1325)
+  - feat: `onChange` prop when the Promise is returned, the loading status will be displayed automatically
+
+### 5.0.5
+`2023-11-08`
+- fix: Picker support `numberOfLines` property [#1311](https://github.com/ant-design/ant-design-mobile-rn/issues/1311)
+  - fix: NativePicker.android.js support numberOfLines [~commit](https://github.com/ant-design/ant-design-mobile-rn/commit/f4505bbf291f12ec492489956ef34608e324af22)
+- fix: Tabs `swipeable` work [#1305](https://github.com/ant-design/ant-design-mobile-rn/issues/1305)
+- feat: gird replace Flex with View wrapper [~commit](https://github.com/ant-design/ant-design-mobile-rn/commit/a1dcf1c44ee505facdd6e7d8717710c61edc6f4f)
+
 ### 5.0.4
 `2023-02-20`
 - fix: children as react element in `@type/react@18`(last) [~commit](https://github.com/ant-design/ant-design-mobile-rn/commit/0d08b6bfe90f923f14155734979e551815ee9b0b)
