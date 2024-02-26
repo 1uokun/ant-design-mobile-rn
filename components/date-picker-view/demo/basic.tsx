@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { ScrollView, Text } from 'react-native'
 import { DatePickerView } from '@ant-design/react-native'
 import { DatePickerFilter } from '@ant-design/react-native/es/date-picker/date-picker-utils'
+import React, { useState } from 'react'
+import { ScrollView, Text } from 'react-native'
 
 const now = new Date()
 
 export default () => {
-  const [value, setValue] = useState<Date>(now)
+  const [value, setValue] = useState(now)
 
   return (
     <ScrollView>
@@ -16,7 +16,7 @@ export default () => {
       <Text style={{ margin: 16 }}>受控模式</Text>
       <DatePickerView
         value={value}
-        onChange={(val) => {
+        onChange={(val: Date) => {
           setValue(val)
           console.log('onChange', val)
         }}
@@ -27,7 +27,7 @@ export default () => {
 
       <Text style={{ margin: 16 }}>周选择器</Text>
       <DatePickerView
-        onChange={(val) => console.log('onChange', val)}
+        onChange={(val: Date) => console.log('onChange', val)}
         precision="week-day"
         defaultValue={now}
         renderLabel={weekdayLabelRenderer}

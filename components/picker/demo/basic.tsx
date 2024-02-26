@@ -28,8 +28,8 @@ const CustomChildren = (props: any) => (
 // visible用法
 function BasicDemo() {
   const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState<any[]>([])
-  const [extend, setExtend] = useState<any>()
+  const [value, setValue] = useState([])
+  const [extend, setExtend] = useState()
   return (
     <View
       style={{
