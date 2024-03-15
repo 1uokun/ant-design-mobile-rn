@@ -11,7 +11,7 @@ title:
 import React from 'react';
 import { ScrollView, Text } from 'react-native'
 import { DatePickerView } from '@ant-design/react-native';
-import { DatePickerFilter } from '@ant-design/react-native/lib/date-picker/date-picker-utils'
+import type { DatePickerFilter } from '@ant-design/react-native'
 
 const now = new Date()
 

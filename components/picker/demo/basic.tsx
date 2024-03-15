@@ -1,9 +1,6 @@
 const data = require('@bang88/china-city-data')
+import type { PickerValue, PickerValueExtend } from '@ant-design/react-native'
 import { Button, List, Picker, Provider } from '@ant-design/react-native'
-import {
-  PickerValue,
-  PickerValueExtend,
-} from '@ant-design/react-native/es/picker-view/PropsType'
 import { district } from 'antd-mobile-demo-data'
 import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'

@@ -1,5 +1,5 @@
+import type { DatePickerFilter } from '@ant-design/react-native'
 import { DatePickerView } from '@ant-design/react-native'
-import { DatePickerFilter } from '@ant-design/react-native/es/date-picker/date-picker-utils'
 import React, { useState } from 'react'
 import { ScrollView, Text } from 'react-native'
 import { ScrollView as GestureScrollView } from 'react-native-gesture-handler'
