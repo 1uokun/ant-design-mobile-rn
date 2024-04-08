@@ -24,6 +24,7 @@ body:
     id: version
     attributes:
       label: 🔴 版本
+      placeholder: 请填写受影响的版本号
     validations:
         required: true
   - type: dropdown
