@@ -1,7 +1,6 @@
 import { PickerView } from '@ant-design/react-native'
 import React from 'react'
 import { ScrollView, Text } from 'react-native'
-import { ScrollView as GestureScrollView } from 'react-native-gesture-handler'
 
 const basicColumns = [
   [
@@ -28,7 +27,9 @@ export default class PickerViewExample extends React.Component {
   }
   render() {
     return (
-      <ScrollView>
+      <ScrollView
+        nestedScrollEnabled //  Enables nested scrolling for Android API level 21+. Nested scrolling is supported by default on iOS.
+      >
         <Text style={{ margin: 16 }}>基础用法</Text>
         <PickerView data={basicColumns} cascade={false} />
 
@@ -41,8 +42,6 @@ export default class PickerViewExample extends React.Component {
           itemStyle={{
             padding: 0,
           }}
-          // To fix: Wheel not scrolling in Android ScrollView
-          _ScrollViewComponent={GestureScrollView}
         />
 
         <Text style={{ margin: 16 }}>受控模式</Text>
