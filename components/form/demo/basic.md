@@ -14,24 +14,17 @@ import {
   Form,
   Input,
   Picker,
+  Provider,
   Radio,
   Flex as Row,
   Switch,
 } from '@ant-design/react-native'
-import { FormProps } from '@ant-design/react-native/lib/form'
 import React from 'react'
-import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 
 const Col = Row.Item
 
 const data = require('@bang88/china-city-data')
-
-type FieldType = {
-  username?: string
-  password?: string
-  remember?: string
-  isDefault?: boolean
-}
 
 const FormExample: React.FC = () => {
   const [form] = Form.useForm()
@@ -40,22 +33,18 @@ const FormExample: React.FC = () => {
     form.submit()
   }
 
-  const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+  const onFinish = (values) => {
     console.log('Success:', values)
   }
 
-  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (
-    errorInfo,
-  ) => {
+  const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo)
   }
 
-  const pickerRef = React.useRef<any>(null)
+  const pickerRef = React.useRef(null)
 
   return (
-    <KeyboardAvoidingView
-      behavior="padding"
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : undefined}>
+    <Provider>
       <ScrollView keyboardShouldPersistTaps="handled">
         <Form
           name="basic"
@@ -78,7 +67,7 @@ const FormExample: React.FC = () => {
               pickerRef.current.toggle()
             }}>
             <Picker data={data} cols={3} ref={pickerRef}>
-              {({ extra, value, toggle }: any) => (
+              {({ extra, value, toggle }) => (
                 <Input
                   value={value?.length ? extra : undefined}
                   onFocus={toggle}
@@ -151,7 +140,7 @@ const FormExample: React.FC = () => {
           </Form.Item>
         </Form>
       </ScrollView>
-    </KeyboardAvoidingView>
+    </Provider>
   )
 }
 
