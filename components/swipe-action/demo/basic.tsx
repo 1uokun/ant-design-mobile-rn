@@ -1,7 +1,7 @@
 /* tslint:disable:no-console */
+import { List, Provider, SwipeAction } from '@ant-design/react-native'
 import React from 'react'
 import { View } from 'react-native'
-import { List, SwipeAction } from '@ant-design/react-native'
 
 export default class BasicSwipeActionExample extends React.Component<any, any> {
   asyncFunction = () => {
@@ -46,32 +46,34 @@ export default class BasicSwipeActionExample extends React.Component<any, any> {
     ]
 
     return (
-      <View style={{ paddingTop: 30 }}>
-        <List>
-          <SwipeAction
-            right={right}
-            left={left}
-            closeOnAction
-            closeOnTouchOutside>
-            <List.Item extra="extra content" disabled>
-              Simple example: left and right buttons
-            </List.Item>
-          </SwipeAction>
-        </List>
-        <List>
-          <SwipeAction
-            right={right}
-            left={left}
-            closeOnAction={false}
-            closeOnTouchOutside
-            onSwipeableOpen={() => console.log('open')}
-            onSwipeableClose={() => console.log('close')}>
-            <List.Item extra="extra content" disabled>
-              Simple example: left and right buttons
-            </List.Item>
-          </SwipeAction>
-        </List>
-      </View>
+      <Provider>
+        <View style={{ paddingTop: 30 }}>
+          <List>
+            <SwipeAction
+              right={right}
+              left={left}
+              closeOnAction
+              closeOnTouchOutside>
+              <List.Item extra="extra content" disabled>
+                Simple example: left and right buttons
+              </List.Item>
+            </SwipeAction>
+          </List>
+          <List>
+            <SwipeAction
+              right={right}
+              left={left}
+              closeOnAction={false}
+              closeOnTouchOutside
+              onSwipeableOpen={() => console.log('open')}
+              onSwipeableClose={() => console.log('close')}>
+              <List.Item extra="extra content" disabled>
+                Simple example: left and right buttons
+              </List.Item>
+            </SwipeAction>
+          </List>
+        </View>
+      </Provider>
     )
   }
 }

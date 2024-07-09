@@ -5,6 +5,7 @@ import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 export default function StepperExample() {
   return (
     <KeyboardAvoidingView
+      style={{ flex: 1 }}
       behavior="padding"
       keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : undefined}>
       <ScrollView>
