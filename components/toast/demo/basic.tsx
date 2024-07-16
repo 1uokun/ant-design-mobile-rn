@@ -8,8 +8,7 @@ import {
 } from '@ant-design/react-native'
 import { loadAsync } from 'expo-font'
 import React, { useEffect, useRef, useState } from 'react'
-import { ActivityIndicator } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ActivityIndicator, ScrollView } from 'react-native'
 
 const ToastExample = () => {
   const handler = useRef()
