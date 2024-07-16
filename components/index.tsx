@@ -36,7 +36,6 @@ export { default as Provider } from './provider/index'
 export { default as Radio } from './radio/index'
 export { default as Result } from './result/index'
 export { default as SearchBar } from './search-bar/index'
-export { default as SegmentedControl } from './segmented-control/index'
 export { default as Slider } from './slider/index'
 export { default as Stepper } from './stepper/index'
 export { default as Steps } from './steps/index'
@@ -48,6 +47,7 @@ export { default as Tag } from './tag/index'
 export { default as Text } from './text/index'
 export { default as TextareaItem } from './textarea-item/index'
 export { default as Toast } from './toast/index'
+export { default as Tooltip } from './tooltip/index'
 export { default as View } from './view/index'
 export { default as WhiteSpace } from './white-space/index'
 export { default as WingBlank } from './wing-blank/index'
@@ -55,3 +55,7 @@ export { default as WingBlank } from './wing-blank/index'
  * @deprecated
  */
 export class ImagePicker {}
+/**
+ * @deprecated
+ */
+export class SegmentedControl {}

@@ -70,10 +70,10 @@ module.exports = {
       module: require('../components/modal/demo/basic'),
     },
     {
-      title: 'Popover',
+      title: 'Tooltip',
       description: '气泡',
       icon: 'https://os.alipayobjects.com/rmsportal/iIOLFHTKUCxBgUV.png',
-      module: require('../components/popover/demo/basic'),
+      module: require('../components/tooltip/demo/basic'),
     },
     {
       title: 'Portal',
@@ -149,12 +149,12 @@ module.exports = {
       icon: 'https://os.alipayobjects.com/rmsportal/SdSqpihcSBoBrFO.png',
       module: require('../components/input/demo/basic'),
     },
-    {
-      title: 'InputItem',
-      description: '文本输入',
-      icon: 'https://os.alipayobjects.com/rmsportal/SdSqpihcSBoBrFO.png',
-      module: require('../components/input-item/demo/basic'),
-    },
+    // {
+    //   title: 'InputItem',
+    //   description: '文本输入',
+    //   icon: 'https://os.alipayobjects.com/rmsportal/SdSqpihcSBoBrFO.png',
+    //   module: require('../components/input-item/demo/basic'),
+    // },
     {
       title: 'Picker',
       description: '选择器',
@@ -204,12 +204,6 @@ module.exports = {
       module: require('../components/steps/demo/basic'), // 必须
     },
     {
-      title: 'SegmentedControl',
-      description: '分段器',
-      icon: 'https://zos.alipayobjects.com/rmsportal/qCqRFuSbewqIWyv.png',
-      module: require('../components/segmented-control/demo/basic'),
-    },
-    {
       title: 'Switch',
       description: '滑动开关',
       icon: 'https://os.alipayobjects.com/rmsportal/ITFdMlELFchsTmz.png',
@@ -217,7 +211,7 @@ module.exports = {
     },
     {
       title: 'SwipeAction', // 必须
-      description: '滑动或长按操作',
+      description: '手势滑动操作',
       icon: 'https://os.alipayobjects.com/rmsportal/nlDYwTsLwJdnaKc.png',
       module: require('../components/swipe-action/demo/basic'),
     },
@@ -233,12 +227,12 @@ module.exports = {
       icon: 'https://os.alipayobjects.com/rmsportal/gfstSzAhvXqKyEg.png',
       module: require('../components/tag/demo/basic'),
     },
-    {
-      title: 'TextAreaItem',
-      description: '多行输入',
-      icon: 'https://os.alipayobjects.com/rmsportal/PfzuWlDVfndrQUK.png',
-      module: require('../components/textarea-item/demo/basic'),
-    },
+    // {
+    //   title: 'TextAreaItem',
+    //   description: '多行输入',
+    //   icon: 'https://os.alipayobjects.com/rmsportal/PfzuWlDVfndrQUK.png',
+    //   module: require('../components/textarea-item/demo/basic'),
+    // },
   ],
   OTHERS: [
     {
