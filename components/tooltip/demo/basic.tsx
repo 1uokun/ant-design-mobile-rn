@@ -6,6 +6,7 @@ import {
   Toast,
   Tooltip,
 } from '@ant-design/react-native'
+import { loadAsync } from 'expo-font'
 import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 
@@ -18,6 +19,13 @@ const actions = [
 
 export default function TooltipExample() {
   const [placement, setPlacement] = useState('top-start')
+
+  useEffect(() => {
+    loadAsync({
+      antoutline: require('@ant-design/icons-react-native/fonts/antoutline.ttf'),
+      antfill: require('@ant-design/icons-react-native/fonts/antfill.ttf'),
+    })
+  })
 
   useEffect(() => {
     let current = 0
