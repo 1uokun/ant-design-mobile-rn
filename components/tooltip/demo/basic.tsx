@@ -25,7 +25,7 @@ export default function TooltipExample() {
       antoutline: require('@ant-design/icons-react-native/fonts/antoutline.ttf'),
       antfill: require('@ant-design/icons-react-native/fonts/antfill.ttf'),
     })
-  })
+  },[])
 
   useEffect(() => {
     let current = 0

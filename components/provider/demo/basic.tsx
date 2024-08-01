@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   DatePicker,
   List,
@@ -12,12 +11,13 @@ import {
 } from '@ant-design/react-native'
 import enUS from '@ant-design/react-native/lib/locale-provider/en_US'
 import esES from '@ant-design/react-native/lib/locale-provider/es_ES'
-import ptBR from '@ant-design/react-native/lib/locale-provider/pt_BR'
-import ruRU from '@ant-design/react-native/lib/locale-provider/ru_RU'
-import zhCN from '@ant-design/react-native/lib/locale-provider/zh_CN'
 import faIR from '@ant-design/react-native/lib/locale-provider/fa_IR'
 import koKR from '@ant-design/react-native/lib/locale-provider/ko_KR'
+import ptBR from '@ant-design/react-native/lib/locale-provider/pt_BR'
+import ruRU from '@ant-design/react-native/lib/locale-provider/ru_RU'
 import svSE from '@ant-design/react-native/lib/locale-provider/sv_SE'
+import zhCN from '@ant-design/react-native/lib/locale-provider/zh_CN'
+import React from 'react'
 
 const maxDate = new Date(2018, 11, 3, 22, 0)
 const minDate = new Date(2015, 7, 6, 8, 30)
