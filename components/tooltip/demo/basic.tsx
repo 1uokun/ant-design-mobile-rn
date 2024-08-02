@@ -25,7 +25,7 @@ export default function TooltipExample() {
       antoutline: require('@ant-design/icons-react-native/fonts/antoutline.ttf'),
       antfill: require('@ant-design/icons-react-native/fonts/antfill.ttf'),
     })
-  },[])
+  }, [])
 
   useEffect(() => {
     let current = 0
@@ -66,20 +66,21 @@ export default function TooltipExample() {
             </Button>
           </Tooltip>
         </List>
-        <List renderHeader="气泡位置" />
-        <Tooltip
-          visible
-          content={
-            <View>
-              <Text>Popover</Text>
-              <Text>Content</Text>
-            </View>
-          }
-          placement={placement}>
-          <Button style={{ alignSelf: 'center', margin: 10 }}>
-            {placement}
-          </Button>
-        </Tooltip>
+        <List renderHeader="气泡位置">
+          <Tooltip
+            visible
+            content={
+              <View>
+                <Text>Popover</Text>
+                <Text>Content</Text>
+              </View>
+            }
+            placement={placement}>
+            <Button style={{ alignSelf: 'center', margin: 10 }}>
+              {placement}
+            </Button>
+          </Tooltip>
+        </List>
         <List renderHeader="浅色气泡菜单">
           <Tooltip.Menu
             actions={actions}

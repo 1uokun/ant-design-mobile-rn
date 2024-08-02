@@ -27,7 +27,7 @@ const ToastExample = () => {
     }
 
     loadFontAsync()
-  })
+  }, [])
 
   if (!fontLoaded) {
     return <Text>'字体加载中...'</Text>
