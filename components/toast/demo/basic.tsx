@@ -21,7 +21,6 @@ const ToastExample = () => {
     const loadFontAsync = async () => {
       await loadAsync({
         antoutline: require('@ant-design/icons-react-native/fonts/antoutline.ttf'),
-        antfill: require('@ant-design/icons-react-native/fonts/antfill.ttf'),
       })
       setFontLoaded(true)
     }

@@ -13,8 +13,6 @@ SplashScreen.preventAutoHideAsync()
 export default function () {
   const [fontsLoaded] = useFonts({
     antoutline: require('@ant-design/icons-react-native/fonts/antoutline.ttf'),
-    antfill: require('@ant-design/icons-react-native/fonts/antfill.ttf'),
-    // TODO-luokun: @react-navigation字体文件 要么改header的字体，要么加字体到这里
   })
 
   const onLayoutRootView = useCallback(async () => {

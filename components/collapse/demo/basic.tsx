@@ -1,4 +1,10 @@
-import { ActivityIndicator, Collapse, Icon, List, Result } from '@ant-design/react-native'
+import {
+  ActivityIndicator,
+  Collapse,
+  Icon,
+  List,
+  Result,
+} from '@ant-design/react-native'
 import { loadAsync } from 'expo-font'
 import React, { useEffect, useState } from 'react'
 import { ScrollView } from 'react-native'
@@ -7,7 +13,6 @@ export default function CollapseExmple() {
   useEffect(() => {
     loadAsync({
       antoutline: require('@ant-design/icons-react-native/fonts/antoutline.ttf'),
-      antfill: require('@ant-design/icons-react-native/fonts/antfill.ttf'),
     })
   }, [])
 
