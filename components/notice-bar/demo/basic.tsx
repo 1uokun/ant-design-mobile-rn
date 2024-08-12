@@ -2,6 +2,7 @@ import {
   Icon,
   List,
   NoticeBar,
+  Picker,
   Provider,
   Slider,
   Switch,
@@ -99,6 +100,7 @@ function ControlDemo() {
   const [play, setPlay] = useState(true)
   const [autoFill, setAutoFill] = useState(false)
   const [direction, setDirection] = useState('left')
+
   const [fps, setFps] = useState(40)
   return (
     <>
@@ -121,17 +123,17 @@ function ControlDemo() {
       <List.Item extra={<Switch checked={autoFill} onChange={setAutoFill} />}>
         AutoFill
       </List.Item>
-      <List.Item
-        extra={
-          <Switch
-            checkedChildren="L"
-            unCheckedChildren="R"
-            checked={direction === 'left'}
-            onChange={(checked) => setDirection(checked ? 'left' : 'right')}
-          />
-        }>
-        Direction
-      </List.Item>
+      <Picker
+        data={[
+          { label: 'Left', value: 'left' },
+          { label: 'Right', value: 'right' },
+          { label: 'Up', value: 'up' },
+          { label: 'Down', value: 'down' },
+        ]}
+        value={[direction]}
+        onChange={(val) => setDirection(val[0] as any)}>
+        <List.Item arrow="horizontal">Direction</List.Item>
+      </Picker>
       <List.Item>
         <List.Item.Brief>速度fps: {fps}</List.Item.Brief>
         <Slider
