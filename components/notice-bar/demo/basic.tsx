@@ -131,7 +131,7 @@ function ControlDemo() {
           { label: 'Down', value: 'down' },
         ]}
         value={[direction]}
-        onChange={(val) => setDirection(val[0] as any)}>
+        onChange={(val) => setDirection(val[0])}>
         <List.Item arrow="horizontal">Direction</List.Item>
       </Picker>
       <List.Item>
