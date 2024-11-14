@@ -58,8 +58,9 @@ const FormExample: React.FC = () => {
             onPress={() => {
               pickerRef.current.toggle()
             }}>
+            {/* TODO-luokun: 待回归 */}
             <Picker data={data} cols={3} ref={pickerRef}>
-              {({ extra, value, toggle }: any) => (
+              {({ extra, value, toggle }) => (
                 <Input
                   value={value?.length ? extra : undefined}
                   onFocus={toggle}
