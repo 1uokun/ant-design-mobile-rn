@@ -53,8 +53,8 @@ function BasicDemo() {
         data={data}
         cols={3}
         onChange={setValue}
-        onClose={() => {
-          setVisible(false)
+        onVisibleChange={(v) => {
+          setVisible(v)
         }}
         visible={visible}
         value={value}
@@ -93,7 +93,6 @@ export default class PopupExample extends React.Component<any, any> {
         <View>
           <List renderHeader={'List Children'}>
             <Picker
-              visible={this.state.visible}
               data={data}
               cols={3}
               value={this.state.value}

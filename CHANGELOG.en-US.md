@@ -13,6 +13,33 @@ toc: false
 - Major version release is not included in this schedule for breadking change and new features.
 
 ---
+### 5.3.0
+`2024-11-14`
+ - 🌟 **Typescript**: export all component props types. 
+   (To support for [nativewind](https://github.com/nativewind/nativewind))
+ - **Toast**: 
+     - feat: add `useToast` hook method [#1388](https://github.com/ant-design/ant-design-mobile-rn/issues/1388)
+ -  **Modal**
+     - feat: add `useModal` hook method [#1383](https://github.com/ant-design/ant-design-mobile-rn/issues/1383)
+     - feat:  add `modalType` prop (Sync to **Picker**)
+-  **Carousel**
+    - feat: add `onScrollAnimationEnd` prop
+- **Slider**
+    - feat: add `disabledStep`、`onSlidingStart`、`onSlidingComplete`、`tapToSeek` prop
+- 🔥 Upgrade react-native@0.75+
+   - fix: [Switch] `style` props works [#1389](https://github.com/ant-design/ant-design-mobile-rn/issues/1398)
+   - fix: [Pagination] Remove `flex: 1` to avoid height collapse
+- other fix
+    - fix: [Form] fix Require cycle
+    - fix: [Tooltip] safe floatingStyles
+    - fix: [Picker] `defaultValue` prop works [#1311](https://github.com/ant-design/ant-design-mobile-rn/issues/1311)
+    - fix: [Radio] `defaultChecked` prop works [#1380](https://github.com/ant-design/ant-design-mobile-rn/issues/1380)
+
+### 5.2.3
+`2024-09-09`
+- 🔥 **Carousel**
+  - fix: Carousel autoplay and manual conflict. [#1259](https://github.com/ant-design/ant-design-mobile-rn/issues/1259)
+- fix: **Button** `children` support `string[]` type. [~commit](https://github.com/ant-design/ant-design-mobile-rn/commit/ce08b346cd1f53c39ea9cd861626247880720af4)
 
 ### 5.2.2
 `2024-08-12`

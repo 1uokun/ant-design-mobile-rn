@@ -14,6 +14,34 @@ toc: false
 
 ---
 
+### 5.3.0
+`2024-11-14`
+ - 🌟 **Typescript**: 导出所有 component 的 props types。 
+   (以支持 [nativewind](https://github.com/nativewind/nativewind))
+ - 🔥 **Toast**: 
+     - feat: 新增 `useToast` hook 方法 [#1388](https://github.com/ant-design/ant-design-mobile-rn/issues/1388)
+ - 🔥 **Modal**
+     - feat: 新增 `useModal` hook 方法 [#1383](https://github.com/ant-design/ant-design-mobile-rn/issues/1383)
+     - feat:  新增 `modalType` 属性 (**Picker** 也同步支持)
+-  **Carousel**
+    - feat: 新增 `onScrollAnimationEnd` 属性
+- **Slider**
+    - feat: 新增 `disabledStep`、`onSlidingStart`、`onSlidingComplete`、`tapToSeek` 属性
+- 🔥 适配 react-native@0.75+
+   - fix: [Switch] `style` props works [#1389](https://github.com/ant-design/ant-design-mobile-rn/issues/1398)
+   - fix: [Pagination] 移除`flex: 1`，避免高度坍塌
+- 其他fix
+    - fix: [Form] fix Require cycle
+    - fix: [Tooltip] safe floatingStyles
+    - fix: [Picker] `defaultValue` prop works [#1311](https://github.com/ant-design/ant-design-mobile-rn/issues/1311)
+    - fix: [Radio] `defaultChecked` prop works [#1380](https://github.com/ant-design/ant-design-mobile-rn/issues/1380)
+
+### 5.2.3
+`2024-09-09`
+- 🔥 **Carousel**
+  - fix: Carousel自动切换和手动切换冲突。[#1259](https://github.com/ant-design/ant-design-mobile-rn/issues/1259)
+- fix: **Button** `children` 支持 `string[]` 类型。[~commit](https://github.com/ant-design/ant-design-mobile-rn/commit/ce08b346cd1f53c39ea9cd861626247880720af4)
+
 ### 5.2.2
 `2024-08-12`
 - 🔥 **NoticeBar**

@@ -1,6 +1,6 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
 import { Button, Carousel } from '@ant-design/react-native'
+import React from 'react'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
 export default class BasicCarouselExample extends React.Component<any, any> {
   carousel: null | Carousel
@@ -22,7 +22,7 @@ export default class BasicCarouselExample extends React.Component<any, any> {
   }
   render() {
     return (
-      <View style={{ marginTop: 30 }}>
+      <ScrollView style={{ paddingTop: 30 }}>
         <View style={{ paddingHorizontal: 15 }}>
           <Text>horizontal</Text>
           <Carousel
@@ -101,7 +101,7 @@ export default class BasicCarouselExample extends React.Component<any, any> {
             {`Toggle autoplay ${this.state.autoplay ? 'true' : 'false'}`}
           </Button>
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }
@@ -116,13 +116,11 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    height: 150,
   },
   containerVertical: {
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    height: 150,
   },
   text: {
     color: '#fff',
