@@ -24,7 +24,7 @@ import AntmView from '../view'
 import useClickAway from '../_util/hooks/useClickAway'
 import useScroll from '../_util/hooks/useScroll'
 import Portal from '../portal'
-import { Placement, TooltipProps, TooltipRef } from './PropsType'
+import { CrossOffset, Placement, TooltipProps, TooltipRef } from './PropsType'
 import Wrapper from './Wrapper'
 import { normalizePlacement } from './normalize-placement'
 import TooltipStyles from './style'
@@ -34,6 +34,7 @@ const defaultProps = {
   defaultVisible: false,
   trigger: 'onPress',
   mode: 'light',
+  crossOffset: { top: StatusBar.currentHeight, left: 0 } as CrossOffset,
 }
 
 const InternalTooltip: React.ForwardRefRenderFunction<
@@ -44,6 +45,7 @@ const InternalTooltip: React.ForwardRefRenderFunction<
 
   const {
     mode,
+    crossOffset,
     styles,
     visible: pvisible,
     defaultVisible,
@@ -102,7 +104,6 @@ const InternalTooltip: React.ForwardRefRenderFunction<
   useEffect(update, [update, floatingStyles, content])
   // Replace `useLayoutEffect(update)` to improve performance
   useScroll(scrollProps.onScroll)
-
   const [{ stopPropagation }] = useClickAway(() => {
     setVisible(false)
   })
@@ -114,23 +115,24 @@ const InternalTooltip: React.ForwardRefRenderFunction<
 
   const arrowPosition = useMemo(() => {
     const side = realPlacement.split('-')[0] as string
-    const arrowBorder = {
-      top: 'borderTopColor',
-      right: 'borderRightColor',
-      bottom: 'borderBottomColor',
-      left: 'borderLeftColor',
-    }[side] as string
     const arrowSide = {
       top: 'bottom',
       right: 'left',
       bottom: 'top',
       left: 'right',
     }[side] as string
+    const arrowRotate = {
+      top: '0deg',
+      bottom: '180deg',
+      left: '270deg',
+      right: '90deg',
+    }[side] as string
     return {
       left: arrowX || undefined,
       top: arrowY || undefined,
       [arrowSide]: -theme.tooltip_arrow_size * 2,
-      [arrowBorder]: mode === 'dark' ? theme.tooltip_dark : theme.fill_base,
+      borderTopColor: mode === 'dark' ? theme.tooltip_dark : theme.fill_base,
+      transform: [{ rotate: arrowRotate }],
     }
   }, [
     arrowX,
@@ -152,6 +154,9 @@ const InternalTooltip: React.ForwardRefRenderFunction<
   })
 
   const safeFloatingStyles = useMemo(() => {
+    if (floatingStyles.left === 0 && floatingStyles.top === 0) {
+      return { display: 'none' } as const
+    }
     if (isNaN(floatingStyles.left) || isNaN(floatingStyles.top)) {
       return { display: 'none' } as const
     }
@@ -171,14 +176,18 @@ const InternalTooltip: React.ForwardRefRenderFunction<
         <Portal>
           <View
             ref={refs.offsetParent}
-            style={{ marginTop: StatusBar.currentHeight }}>
+            style={{
+              marginTop: crossOffset.top,
+              marginLeft: crossOffset.left,
+            }}
+            collapsable={false}>
             <View
               ref={refs.setFloating}
               onLayout={update}
               collapsable={false}
               style={[ss.tooltip, safeFloatingStyles, style]}>
               <View
-                style={[ss.arrow, arrowPosition]}
+                style={[arrowPosition, ss.arrow]}
                 ref={arrowRef}
                 collapsable={false}
               />
