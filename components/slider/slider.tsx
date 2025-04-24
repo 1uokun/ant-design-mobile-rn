@@ -1,8 +1,10 @@
 import getMiniDecimal from '@rc-component/mini-decimal'
 import React, {
+  ForwardedRef,
   useCallback,
   useContext,
   useEffect,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
@@ -18,7 +20,12 @@ import Animated, {
 import HapticsContext from '../provider/HapticsContext'
 import { useTheme } from '../style'
 import Marks from './marks'
-import { BaseSliderProps, SliderProps, SliderValueType } from './PropsType'
+import {
+  BaseSliderProps,
+  SliderProps,
+  SliderRef,
+  SliderValueType,
+} from './PropsType'
 import SliderStyles from './style'
 import Thumb from './thumb'
 import Ticks from './ticks'
@@ -33,8 +40,9 @@ function nearest(arr: number[], target: number) {
   })
 }
 
-export function Slider<SliderValue extends SliderValueType>(
+function InternalSlider<SliderValue extends SliderValueType>(
   props: SliderProps,
+  ref: ForwardedRef<SliderRef>,
 ) {
   const {
     value: propsValue,
@@ -203,7 +211,7 @@ export function Slider<SliderValue extends SliderValueType>(
       const safeValue = getSafeValue(value)
       if (isSliding) {
         onChange?.(safeValue)
-        ticks && !disabledStep && onHaptics('slider')
+        ticks && !disabledStep && onHaptics?.('slider')
       }
       if (!isSliding || range) {
         offset1.value = getPositionByValue(safeValue, 0)
@@ -249,11 +257,14 @@ export function Slider<SliderValue extends SliderValueType>(
       } else {
         sliderValue.value = targetValue as SliderValue
       }
+      setTimeout(() => {
+        onChange?.(sliderValue.value)
+      })
       if (!ticks) {
-        onHaptics('slider')
+        onHaptics?.('slider')
       }
     },
-    [getValueByPosition, onHaptics, range, sliderValue, ticks],
+    [getValueByPosition, onChange, onHaptics, range, sliderValue, ticks],
   )
 
   // ================= onSlide gesture ======================
@@ -359,6 +370,15 @@ export function Slider<SliderValue extends SliderValueType>(
     )
   }
 
+  // ================== Actions Ref ==================
+  const actions = React.useMemo(
+    () => ({
+      onSlide,
+    }),
+    [onSlide],
+  )
+  useImperativeHandle(ref, () => actions)
+
   return (
     <GestureDetector gesture={gesture}>
       <View style={[ss.slider, disabled && ss.disabled, style]}>
@@ -384,3 +404,12 @@ export function Slider<SliderValue extends SliderValueType>(
     </GestureDetector>
   )
 }
+
+const Slider = React.forwardRef<SliderRef, SliderProps>(InternalSlider) as ((
+  props: React.PropsWithChildren<SliderProps> & React.RefAttributes<SliderRef>,
+) => React.ReactElement) &
+  Pick<React.FC, 'displayName'>
+
+Slider.displayName = 'Slider'
+
+export default React.memo(Slider)

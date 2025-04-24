@@ -14,6 +14,31 @@ toc: false
 
 ---
 
+### 5.4.0
+`2025-04-18`
+ - upgrade: 🚩 `react-native`最低版本升至`0.67.5`  [#1420](https://github.com/ant-design/ant-design-mobile-rn/pull/1420) [@MuNitCat](https://github.com/MuNitCat)
+   - feat: **Modal** 安卓端改用 `BackHandler` 监听返回键
+ - fix: **DatePicker** `itemHeight` 样式偏移bug [#1413](https://github.com/ant-design/ant-design-mobile-rn/issues/1413)
+ - fix: **Slider** `tapToSeek` 通过点击无法触发 `onChange` [#1417](https://github.com/ant-design/ant-design-mobile-rn/issues/1417)
+ - fix: **Tooltip** `styles` arrow 设置borderColor无效bug [#1419](https://github.com/ant-design/ant-design-mobile-rn/pull/1419)
+
+### 5.3.2
+`2024-12-11`
+ - **Tooltip**
+    - feat: Add offset settings to tooltip [#1398](https://github.com/ant-design/ant-design-mobile-rn/pull/1398)
+    - fix: Tooltip flash style [#1391](https://github.com/ant-design/ant-design-mobile-rn/issues/1391)
+ - feat: Slider ref
+ - fix: new Date not adhering to ISO 8601 [#1401](https://github.com/ant-design/ant-design-mobile-rn/pull/1401)
+
+### 5.3.1
+`2024-11-20`
+ - **Carousel**
+    - feat: 新增 `lazy` & `renderLazyPlaceholder` 属性
+    - fix: react-native@0.75+ 高度坍塌 [#1372](https://github.com/ant-design/ant-design-mobile-rn/issues/1372)
+ - **Provider**
+    - fix: `onHaptics` 不工作bug
+ - fix: `lodash.mergewith` dependencie [#1397](https://github.com/ant-design/ant-design-mobile-rn/issues/1397)
+
 ### 5.3.0
 `2024-11-14`
  - 🌟 **Typescript**: 导出所有 component 的 props types。 
