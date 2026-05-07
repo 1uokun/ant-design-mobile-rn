@@ -173,6 +173,9 @@ export default {
   modal_zindex: 999,
   tooltip_zindex: 999,
 
+  // skeleton
+  skeleton_background_color: 'rgba(190, 190, 190, 0.2)',
+
   // rate
   rate_icon_size: 32,
   color_rate_full: '#ff9f18',

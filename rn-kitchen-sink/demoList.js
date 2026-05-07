@@ -198,6 +198,12 @@ module.exports = {
       module: require('../components/rate/demo/basic'),
     },
     {
+      title: 'Skeleton',
+      description: '骨架屏',
+      icon: 'https://luokun.oss-cn-hangzhou.aliyuncs.com/github/skeleton_icon.png',
+      module: require('../components/skeleton/demo/basic'),
+    },
+    {
       title: 'Slider',
       description: '滑动输入条',
       icon: 'https://os.alipayobjects.com/rmsportal/mCyccAjoVLFVhSH.png',

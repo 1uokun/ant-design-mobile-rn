@@ -50,6 +50,11 @@ export type {
 export type { RateProps } from './rate/PropsType'
 export type { ResultNativeProps as ResultProps } from './result/index'
 export type { SearchBarProps } from './search-bar/index'
+export type {
+  SkeletonParagraphProps,
+  SkeletonProps,
+  SkeletonTitleProps,
+} from './skeleton/PropsType'
 export type { SliderProps, SliderRef } from './slider/PropsType'
 export type { StepperProps } from './stepper/PropsType'
 export type { StepsProps } from './steps/index'
