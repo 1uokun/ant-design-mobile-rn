@@ -1,6 +1,8 @@
 ---
 category: Components
-type: Data Display
+group:
+  title: Data Display
+  order: 4
 title: Rate
 version: 5.5.0-rc.1
 ---
@@ -10,6 +12,10 @@ Graphical representation of the degree of rating scale.
 ### Rule
 
 - Useful for showing things ratings and quick scoring.
+
+## Examples
+
+<code src="./demo/basic.tsx"></code>
 
 ## API
 

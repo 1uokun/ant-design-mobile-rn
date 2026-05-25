@@ -1,6 +1,8 @@
 ---
 category: Components
-type: Data Display
+group:
+  title: 数据展示
+  order: 4
 title: Rate
 subtitle: 评分
 version: 5.5.0-rc.1
@@ -11,6 +13,10 @@ version: 5.5.0-rc.1
 ### 规则
 
 - 适用于展示事物评级以及快速打分。
+
+## 代码演示
+
+<code src="./demo/basic.tsx"></code>
 
 ## API
 

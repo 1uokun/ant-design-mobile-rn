@@ -1,6 +1,6 @@
+import { Flex, List, Rate, Toast, WhiteSpace } from '@ant-design/react-native'
 import React from 'react'
 import { ScrollView, Text } from 'react-native'
-import { Flex, List, Rate, Toast, WhiteSpace } from '../../'
 const Item = List.Item
 
 export default class RateExample extends React.Component<any, any> {

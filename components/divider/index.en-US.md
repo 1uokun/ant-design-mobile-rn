@@ -1,12 +1,18 @@
 ---
 category: Components
-type: Layout
+group:
+  title: Layout
+  order: 1
 title: Divider
 version: 5.5.0-rc.1
 ---
 
 Divide sections of an article.
 Divide inline text and links such as the operation column of table.
+
+## Examples
+
+<code src="./demo/basic.tsx"></code>
 
 ### Divider
 
