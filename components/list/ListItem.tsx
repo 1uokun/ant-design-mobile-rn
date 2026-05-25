@@ -9,6 +9,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native'
+import { mergeProps } from '../_util/with-default-props'
 import Icon from '../icon'
 import DisabledContext from '../provider/DisabledContext'
 import { useTheme } from '../style'
@@ -37,8 +38,9 @@ const defaultProps = {
 const InternalListItem: React.ForwardRefRenderFunction<
   TouchableHighlight,
   ListItemProps
-> = (props, ref) => {
+> = (rawProps, ref) => {
   const contextDisabled = React.useContext(DisabledContext)
+  const props = mergeProps(defaultProps, rawProps)
   const {
     styles,
     children,
@@ -244,9 +246,7 @@ const ListItem = React.forwardRef<TouchableHighlight, ListItemProps>(
   props: React.PropsWithChildren<ListItemProps> &
     React.RefAttributes<TouchableHighlight>,
 ) => React.ReactElement) &
-  Pick<React.FC, 'displayName' | 'defaultProps'>
-
-ListItem.defaultProps = defaultProps
+  Pick<React.FC, 'displayName'>
 
 ListItem.displayName = 'ListItem'
 

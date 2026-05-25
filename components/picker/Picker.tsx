@@ -12,6 +12,7 @@ import { Omit } from 'utility-types'
 
 import { Keyboard } from 'react-native'
 import { getComponentLocale } from '../_util/getLocale'
+import { mergeProps } from '../_util/with-default-props'
 import { LocaleContext } from '../locale-provider'
 import { PickerColumn, PickerValue } from '../picker-view/PropsType'
 import RMCPickerView from '../picker-view/picker-view'
@@ -35,8 +36,14 @@ export interface RMCPickerProps
   handleSelect: (value: PickerValue, index: number) => void
 }
 
-const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((props, ref) => {
+const defaultProps = {
+  triggerType: 'onPress',
+  format: (labels: string[]) => labels.join(','),
+}
+
+const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((rawProps, ref) => {
   const contextDisabled = useContext(DisabledContext)
+  const props = mergeProps(defaultProps, rawProps)
   const {
     onVisibleChange,
     visible,
@@ -207,9 +214,5 @@ const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((props, ref) => {
 })
 
 RMCPicker.displayName = 'Picker'
-RMCPicker.defaultProps = {
-  triggerType: 'onPress',
-  format: (labels: string[]) => labels.join(','),
-}
 
 export default RMCPicker

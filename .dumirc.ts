@@ -61,15 +61,24 @@ export default defineConfig({
     'react-native': 'react-native-web',
   },
   mfsu: false,
-  // 让 Babel 转译 node_modules 中含 JSX 的包
+  // Reanimated Web: https://docs.swmansion.com/react-native-reanimated/docs/guides/web-support/
+  extraBabelPlugins: [
+    '@babel/plugin-transform-export-namespace-from',
+    'react-native-worklets/plugin',
+  ],
   extraBabelIncludes: [
     path.join(__dirname, 'node_modules/@bang88/react-native-ultimate-listview'),
     path.join(__dirname, 'node_modules/react-native-collapsible'),
     path.join(__dirname, 'node_modules/react-native-modal-popover'),
+    path.join(__dirname, 'node_modules/react-native-gesture-handler'),
     path.join(__dirname, 'node_modules/react-native-reanimated'),
+    path.join(__dirname, 'node_modules/react-native-worklets'),
+    path.join(__dirname, 'components'),
   ],
-  // TODO-luokun: ⚠️react-native-reanimated不支持web
-  chainWebpack(config: any) {
+  chainWebpack(config:any, { webpack }: any) {
+    config.plugin('reanimated-web-env').use(webpack.EnvironmentPlugin, [
+      { JEST_WORKER_ID: null },
+    ])
     // ==================== 确保 @ant-design/react-native 正确解析 ====================
     // 在 webpack 的 resolve.alias 中显式设置 @ant-design/react-native 指向 components/index.tsx
     config.resolve.alias.set(
@@ -98,7 +107,7 @@ export default defineConfig({
       .include.add(path.join(__dirname, 'components'))
       .end()
       .use('type-only-stub')
-      .loader(path.join(__dirname, 'scripts/dumi/type-only-stub-loader.js'))
+      .loader(path.join(__dirname, '.dumi/loaders/type-only-stub-loader.js'))
       .end()
 
     // 让 babel 转译 node_modules 中含 JSX 的包
@@ -109,8 +118,9 @@ export default defineConfig({
       ),
       path.join(__dirname, 'node_modules/react-native-collapsible'),
       path.join(__dirname, 'node_modules/react-native-modal-popover'),
-      path.join(__dirname, 'node_modules/react-native-reanimated'),
       path.join(__dirname, 'node_modules/react-native-gesture-handler'),
+      path.join(__dirname, 'node_modules/react-native-reanimated'),
+      path.join(__dirname, 'node_modules/react-native-worklets'),
     ].forEach((pkg) => {
       config.module.rule('js').include.add(pkg)
       config.module.rule('jsx').include.add(pkg)
