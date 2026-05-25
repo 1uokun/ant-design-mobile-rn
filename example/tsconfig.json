@@ -4,9 +4,16 @@
     "strict": true,
     "baseUrl": "..",
     "paths": {
-      "@ant-design/react-native": ["./components/index.tsx"],
-      "@ant-design/react-native/lib/*": ["./components/*"]
+      "@ant-design/react-native": [
+        "./components/index.tsx"
+      ],
+      "@ant-design/react-native/lib/*": [
+        "./components/*"
+      ]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
