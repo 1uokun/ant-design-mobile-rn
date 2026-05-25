@@ -1,6 +1,6 @@
 {
   "name": "@ant-design/react-native",
-  "version": "5.5.0-rc.1",
+  "version": "5.4.3",
   "description": "基于蚂蚁金服移动设计规范的 React Native 组件库",
   "keywords": [
     "ant",
@@ -81,6 +81,7 @@
     "enquire.js": "^2.1.1",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^9.1.0",
+    "gh-pages": "^6.3.0",
     "glob": "^7.1.1",
     "jest": "^29.7.0",
     "lint-staged": "^8.0.4",
@@ -126,7 +127,7 @@
     "watch-tsc": "tsc --watch",
     "clean": "antd-tools run clean",
     "start": "cross-env PORT=8003 dumi dev",
-    "deploy": "dumi build && cp CNAME _site/CNAME && touch _site/.nojekyll && gh-pages -d _site",
+    "deploy": "dumi build && gh-pages -d _site --nojekyll --cname $(cat CNAME)",
     "pub": "cross-env BABEL_ENV=dist antd-tools run pub",
     "rn-start": "node scripts/start.js",
     "ios": "concurrently \"npm run watch-tsc\" \"npm run _ios\"",
