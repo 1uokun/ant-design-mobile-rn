@@ -11,7 +11,7 @@ const Line: React.FC<LinePropsType> = ({
   style,
 }) => {
   const [lineLength, setLineLength] = useState(1)
-  const backgroundColor = color || style?.backgroundColor
+  const backgroundColor = color || StyleSheet.flatten(style)?.backgroundColor
   const _thickness = thickness >= 0.1 ? thickness : StyleSheet.hairlineWidth
   const isHorizontal = orientation === 'horizontal'
 
@@ -95,7 +95,7 @@ const Line: React.FC<LinePropsType> = ({
   // ================== dashedJointDom ==================
   const dashedJointDom = useMemo(() => {
     const { l, g } = dashedPattern
-    const count = Math.ceil((lineLength + g) / (g * 2 + l))
+    const count = Math.min(Math.ceil((lineLength + g) / (g * 2 + l)), 500)
     return (
       <View
         style={orientationStyle}

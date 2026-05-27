@@ -33,7 +33,9 @@ config.resolver.resolveRequest = (context, moduleName, platform) => {
     return resolve(context, path.join(componentsRoot, subpath), platform)
   }
 
-  return resolve(context, moduleName, platform)
+  return context.resolveRequest
+    ? context.resolveRequest(context, moduleName, platform)
+    : resolve(context, moduleName, platform)
 }
 
 module.exports = config

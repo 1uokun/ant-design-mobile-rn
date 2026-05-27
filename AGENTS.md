@@ -55,7 +55,7 @@ npm run web               # expo start --web
 
 Published npm package: **`@ant-design/react-native`**. Source lives under `components/`; build artifacts go to `lib/` (CJS) and `es/` (ESM). **Never edit `lib/` or `es/` directly** — change `components/` and run `npm run compile`.
 
-```
+```text
 components/           # All UI components (single source of truth)
 ├── index.tsx         # Public exports
 ├── <name>/

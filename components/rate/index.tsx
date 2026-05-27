@@ -32,6 +32,7 @@ const Rate = ({
   const width = React.useRef<number>(0)
   const startRating = React.useRef<number>(-1)
   const endRating = React.useRef<number>(-1)
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
   const [isInteracting, setInteracting] = React.useState(false)
   const [internalValue, setInternalValue] = useMergedState(defaultValue, {
     value,
@@ -39,6 +40,14 @@ const Rate = ({
   })
   const valueRef = React.useRef(internalValue)
   valueRef.current = internalValue
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
 
   const prevRating = React.useRef<number>(internalValue)
 
@@ -93,7 +102,10 @@ const Rate = ({
     const handleReset = () => {
       endRating.current = -1
       startRating.current = -1
-      setTimeout(() => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+      timeoutRef.current = setTimeout(() => {
         setInteracting(false)
       }, defaultAnimationConfig.delay)
     }

@@ -17,7 +17,7 @@ const Divider = (props: DividerProps) => {
     content,
     thickness = StyleSheet.hairlineWidth,
     color,
-    pattern = [4, 2],
+    pattern,
     innerPadding = 10,
     orientationMargin,
     style,
@@ -89,7 +89,7 @@ const Divider = (props: DividerProps) => {
 
   // ================== contentDom ==================
   const contentDom = useMemo(() => {
-    if (typeof content === 'string') {
+    if (typeof content === 'string' || typeof content === 'number') {
       return <Text style={memoStyles.content}>{content}</Text>
     }
     if (React.isValidElement(content)) {

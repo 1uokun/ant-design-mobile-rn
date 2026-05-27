@@ -22,6 +22,8 @@ jest.mock('react-native-reanimated', () => {
     withDecay: (value) => value,
     runOnJS: (fn) => fn,
     runOnUI: (fn) => fn,
+    useAnimatedReaction: () => {},
+    useFrameCallback: () => {},
     Easing: {
       linear: (t) => t,
       ease: (t) => t,

@@ -52,8 +52,8 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
   _containerMeasurements: any
   _scrollView: ScrollView
   _newLineLeft: number
+  _scrollValueListenerId?: string
   _initialized: boolean = false
-  _tabMeasurementsCount: number = 0
 
   constructor(props: PropsType) {
     super(props)
@@ -67,13 +67,16 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
   }
 
   componentDidMount() {
-    this.props.scrollValue.addListener(this.updateView)
+    this._scrollValueListenerId = this.props.scrollValue?.addListener(
+      this.updateView,
+    )
   }
 
   componentWillUnmount() {
-    this.props.scrollValue?.removeAllListeners()
+    if (this._scrollValueListenerId) {
+      this.props.scrollValue?.removeListener(this._scrollValueListenerId)
+    }
     this._initialized = false
-    this._tabMeasurementsCount = 0
   }
 
   tryInitializeTabBar = () => {
@@ -82,7 +85,7 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
       this.props.tabs.length > 0 &&
       this._containerMeasurements &&
       this._tabContainerMeasurements &&
-      this._tabMeasurementsCount === this.props.tabs.length
+      Object.keys(this._tabsMeasurements).length === this.props.tabs.length
     ) {
       this.initializeTabBar()
       this._initialized = true
@@ -165,8 +168,10 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
     newScrollX = newScrollX >= 0 ? newScrollX : 0
 
     if (Platform.OS !== 'android') {
-      const rightBoundScroll =
-        this._tabContainerMeasurements.width - this._containerMeasurements.width
+      const rightBoundScroll = Math.max(
+        0,
+        this._tabContainerMeasurements.width - this._containerMeasurements.width,
+      )
       newScrollX = newScrollX > rightBoundScroll ? rightBoundScroll : newScrollX
     }
 
@@ -290,7 +295,6 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
   measureTab = (page: number, event: LayoutChangeEvent) => {
     const { x, width, height } = event.nativeEvent.layout
     this._tabsMeasurements[page] = { left: x, right: x + width, width, height }
-    this._tabMeasurementsCount++
     this.tryInitializeTabBar()
     if (this._initialized && page === this.props.activeTab) {
       this.updateView({ value: this.props.scrollValue._value }, false)
