@@ -27,8 +27,19 @@ export default class Flex extends React.Component<FlexProps, any> {
   }
 
   render() {
-    const { style, direction, wrap, justify, align, children, ...restProps } =
-      this.props
+    const {
+      style,
+      direction,
+      wrap,
+      justify,
+      align,
+      children,
+      onPress,
+      onLongPress,
+      onPressIn,
+      onPressOut,
+      ...restProps
+    } = this.props
     const transferConst = [justify, align]
     const transferConstStyle = transferConst.map((el) => {
       let tempTxt
@@ -66,14 +77,15 @@ export default class Flex extends React.Component<FlexProps, any> {
     )
 
     const shouldWrapInTouchableComponent =
-      restProps.onPress ||
-      restProps.onLongPress ||
-      restProps.onPressIn ||
-      restProps.onPressOut
+      onPress || onLongPress || onPressIn || onPressOut
 
     if (shouldWrapInTouchableComponent) {
       return (
-        <TouchableWithoutFeedback {...restProps}>
+        <TouchableWithoutFeedback
+          onPress={onPress}
+          onLongPress={onLongPress}
+          onPressIn={onPressIn}
+          onPressOut={onPressOut}>
           {inner}
         </TouchableWithoutFeedback>
       )

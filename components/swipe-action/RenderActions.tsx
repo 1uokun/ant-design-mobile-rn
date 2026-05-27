@@ -10,7 +10,7 @@ interface RenderActionsProps {
   buttons?: SwipeoutButtonProps[]
   closeOnAction: boolean
   isLeft: boolean
-  progressAnimatedValue: Animated.AnimatedInterpolation
+  progressAnimatedValue: Animated.AnimatedInterpolation<number>
   setClose: () => void
   styles?: Partial<SwipeActionStyle>
 }

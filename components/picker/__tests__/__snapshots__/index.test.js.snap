@@ -9,7 +9,6 @@ Array [
     style={
       Object {
         "flex": 1,
-        "overflow": "scroll",
       }
     }
   >
@@ -57,6 +56,15 @@ Array [
       }
     >
       <View
+        accessibilityState={
+          Object {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -125,6 +133,14 @@ Array [
           }
         >
           <View
+            accessibilityValue={
+              Object {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -173,6 +189,14 @@ Array [
             }
           />
           <View
+            accessibilityValue={
+              Object {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -243,7 +267,6 @@ Array [
                 ]
               }
             >
-              
               　
             </Text>
           </View>

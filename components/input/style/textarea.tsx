@@ -2,7 +2,7 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { Theme } from '../../style'
 export interface TextAreaStyle {
   container: ViewStyle
-  input: ViewStyle
+  input: TextStyle
   clearIcon: ViewStyle
   showCount: TextStyle
   showCountError: TextStyle

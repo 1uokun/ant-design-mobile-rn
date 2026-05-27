@@ -7,7 +7,7 @@ type animateType = (_TimingAnimationConfig: {
     | Animated.AnimatedValue
     | { x: number; y: number }
     | Animated.AnimatedValueXY
-    | Animated.AnimatedInterpolation
+    | Animated.AnimatedInterpolation<number>
   easing?: EasingFunction
   duration?: number
   delay?: number
@@ -37,9 +37,9 @@ export function useAnimate(configure: ConfigureInterface) {
 
 // Animated.timing hook
 export function useAnimatedTiming(): [Animated.Value, animateType] {
-  const animatedRef = React.useRef<Animated.CompositeAnimation | void>()
+  const animatedRef = React.useRef<Animated.CompositeAnimation | undefined>(undefined)
 
-  var [animatedValue] = useAnimate({
+  const [animatedValue] = useAnimate({
     initialValue: 0,
   })
 
@@ -53,13 +53,15 @@ export function useAnimatedTiming(): [Animated.Value, animateType] {
       callback,
     }: AnimatedFuncParams) => {
       animatedRef.current?.stop()
-      animatedRef.current = Animated.timing(animatedValue, {
+      const animation = Animated.timing(animatedValue, {
         toValue,
         easing,
         duration,
         delay,
         useNativeDriver,
-      }).start(callback)
+      })
+      animatedRef.current = animation
+      animation.start(callback)
     },
     [animatedValue],
   )

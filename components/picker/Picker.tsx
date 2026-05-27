@@ -73,7 +73,7 @@ const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((rawProps, ref) => {
   })
 
   const setInnerVisible = useCallback(
-    (bool) => {
+    (bool: boolean) => {
       !disabled && setInnerVisible2(bool)
     },
     [disabled, setInnerVisible2],
@@ -162,15 +162,16 @@ const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((rawProps, ref) => {
       })
     }
     const child = children as React.ReactElement
+    const childProps = child.props as Record<string, any>
     const newChildProps = {
       value,
       extra: innerExtra || extra || _locale.extra,
       disabled,
-    } as any
+    } as Record<string, any>
     if (!disabled) {
       newChildProps[props.triggerType!] = (e: any) => {
-        if (child.props[props.triggerType!]) {
-          child.props[props.triggerType!](e)
+        if (typeof childProps[props.triggerType!] === 'function') {
+          childProps[props.triggerType!](e)
         }
         actions.toggle()
       }

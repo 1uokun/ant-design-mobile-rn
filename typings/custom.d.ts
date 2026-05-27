@@ -1,5 +1,3 @@
-declare module '@ant-design/react-native';
-
 declare module 'antd-mobile-demo-data';
 
 declare module 'normalize-css-color';

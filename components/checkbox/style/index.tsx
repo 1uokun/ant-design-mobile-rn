@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle } from 'react-native'
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { Theme } from '../../style'
 
 export interface CheckboxStyle {
@@ -11,8 +11,8 @@ export interface CheckboxStyle {
   checkbox_inner_disabled: ViewStyle
   checkbox_inner_before: ViewStyle
   checkbox_inner_before_disabled: ViewStyle
-  checkbox_label: ViewStyle
-  checkbox_label_disabled: ViewStyle
+  checkbox_label: TextStyle
+  checkbox_label_disabled: TextStyle
   checkbox_inner_indeterminate: ViewStyle
   checkbox_inner_before_indeterminate: ViewStyle
 }

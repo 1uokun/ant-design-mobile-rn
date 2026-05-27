@@ -300,9 +300,12 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
   getTabs = (styles: TabBarStyle, theme: Theme) => {
     const { tabs, page = 0 } = this.props
     return tabs.map((name, index) => {
-      let tab = { title: name } as TabData
-      if (tabs.length - 1 >= index) {
-        tab = tabs[index]
+      let tab: TabData =
+        typeof name === 'object' && name !== null && 'title' in name
+          ? (name as TabData)
+          : { title: name }
+      if (tabs.length - 1 >= index && typeof tabs[index] === 'object') {
+        tab = tabs[index] as TabData
       }
       const tabWidth = this.state._containerWidth / Math.min(page, tabs.length)
 

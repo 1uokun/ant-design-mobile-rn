@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
 import React, { forwardRef, memo, useContext, useMemo, useRef } from 'react'
-import { Text, TouchableHighlight } from 'react-native'
+import { Text } from 'react-native'
 import List from '../list/index'
 import DisabledContext from '../provider/DisabledContext'
 import { WithTheme } from '../style'
@@ -9,7 +9,9 @@ import Checkbox from './Checkbox'
 import { CheckboxForwardedRef, CheckboxItemProps } from './PropsType'
 import checkboxStyles from './style/index'
 
-const CheckboxItem = forwardRef<TouchableHighlight, CheckboxItemProps>(
+type ListItemRef = React.ElementRef<typeof List.Item>
+
+const CheckboxItem = forwardRef<ListItemRef, CheckboxItemProps>(
   (props, ref) => {
     const contextDisabled = useContext(DisabledContext)
     const {

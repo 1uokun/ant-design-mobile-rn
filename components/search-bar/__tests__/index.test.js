@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { act } from 'react'
 import { TextInput } from 'react-native'
 import renderer from 'react-test-renderer'
 import SearchBar from '../index'
@@ -16,28 +16,44 @@ describe('SearchBar', () => {
     })
 
     it('fires onChange event', () => {
-      wrapper = renderer.create(<SearchBar onChange={handler} />)
-      wrapper.root.findByType(TextInput).props.onChangeText('foo')
+      act(() => {
+        wrapper = renderer.create(<SearchBar onChange={handler} />)
+      })
+      act(() => {
+        wrapper.root.findByType(TextInput).props.onChangeText('foo')
+      })
       expect(handler).toBeCalledWith('foo')
     })
 
     it('fires onFocus event', () => {
-      wrapper = renderer.create(<SearchBar onFocus={handler} />)
-      wrapper.root.findByType(TextInput).props.onFocus()
+      act(() => {
+        wrapper = renderer.create(<SearchBar onFocus={handler} />)
+      })
+      act(() => {
+        wrapper.root.findByType(TextInput).props.onFocus()
+      })
       expect(handler).toBeCalledWith(undefined)
     })
 
     it('fires onBlur event', () => {
-      wrapper = renderer.create(<SearchBar onBlur={handler} />)
-      wrapper.root.findByType(TextInput).props.onBlur()
+      act(() => {
+        wrapper = renderer.create(<SearchBar onBlur={handler} />)
+      })
+      act(() => {
+        wrapper.root.findByType(TextInput).props.onBlur()
+      })
       expect(handler).toBeCalledWith(undefined)
     })
 
     it('fires onCancel event', () => {
-      wrapper = renderer.create(
-        <SearchBar value="test" showCancelButton onCancel={handler} />,
-      )
-      wrapper.root.instance.onCancel()
+      act(() => {
+        wrapper = renderer.create(
+          <SearchBar value="test" showCancelButton onCancel={handler} />,
+        )
+      })
+      act(() => {
+        wrapper.getInstance().onCancel()
+      })
       expect(handler).toBeCalledWith('test')
     })
   })

@@ -21,7 +21,9 @@ const Ticks: FC<TicksProps> = ({ points, max, min, sliderValue, styles }) => {
   const elements = useMemo(
     () =>
       points.map((point) => {
-        const style = { left: `${(Math.abs(point - min) / range) * 100}%` }
+        const style = {
+          left: `${(Math.abs(point - min) / range) * 100}%`,
+        } as const
         return (
           <Tick
             key={point}

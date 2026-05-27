@@ -32,7 +32,7 @@ const ToastContainer: FC<ToastProps> = (p) => {
     position,
   } = props
 
-  const anim = React.useRef<Animated.CompositeAnimation | null>()
+  const anim = React.useRef<Animated.CompositeAnimation | null>(null)
   const fadeAnim = React.useRef(new Animated.Value(0))
 
   useEffect(() => {

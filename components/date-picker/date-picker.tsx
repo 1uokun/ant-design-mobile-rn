@@ -14,6 +14,7 @@ import { mergeProps } from '../_util/with-default-props'
 import useRenderLabel from '../date-picker-view/useRenderLabel'
 import { LocaleContext } from '../locale-provider'
 import RMCPicker, { PickerRef } from '../picker/Picker'
+import { PickerValueExtend } from '../picker-view/PropsType'
 import { DatePickerPropsType } from './PropsType'
 import { getValueExtend, usePickerValue } from './columns-extend'
 import {
@@ -118,15 +119,15 @@ const DatePicker = forwardRef<DatePickerRef, DatePickerProps>((props, ref) => {
   )
 
   const handleOk = useCallback(
-    (val, ext) => {
+    (val: string[], ext: PickerValueExtend) => {
       p.onOk?.(convertStringArrayToDate(val, _precision), ext)
-      setValueProp(val)
+      setValueProp(convertStringArrayToDate(val, _precision))
     },
     [_precision, p, setValueProp],
   )
 
   const handleChange = useCallback(
-    (val, ext) => {
+    (val: string[], ext: PickerValueExtend) => {
       p.onChange?.(convertStringArrayToDate(val, _precision), ext)
     },
     [_precision, p],
@@ -152,7 +153,7 @@ const DatePicker = forwardRef<DatePickerRef, DatePickerProps>((props, ref) => {
   )
 
   const onVisibleChange = useCallback(
-    (visible) => {
+    (visible: boolean) => {
       p.onVisibleChange?.(visible)
       if (visible && !valueProp) {
         setInnerValue(new Date())

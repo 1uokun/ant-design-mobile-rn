@@ -3,8 +3,7 @@
 ## 环境
 
 ```
-node = 16.20.0+
-npm = 8.19.4+
+node = 22.22.1+
 ```
 
 ## 代码风格
@@ -24,10 +23,10 @@ $ npm run lint
 ├── components              组件代码
 ├── development.xxx.md      开发说明文档
 ├── docs                    其他文档
+├── .dumi                   官网代码
 ├── example                 Expo示例工程代码
 ├── rn-kitchen-sink         RN示例工程代码
 ├── scripts                 辅助脚本
-├── site                    官网代码
 ├── tests                   通用测试代码
 ├── tsconfig.json           TypeScript配置
 ├── typings                 第三方缺失定义
@@ -103,14 +102,14 @@ exports.demo = BasicButtonExample;
 
  - **使用 expo-cli 运行**
  
-> node >= 18
+> node >= 22
 
 ```bash
 # go to expo example folder
 cd example
 
-# install dependencies
-npx expo install
+# install dependencies(一定要用yarn)
+yarn
 
 # start expo
 npm start

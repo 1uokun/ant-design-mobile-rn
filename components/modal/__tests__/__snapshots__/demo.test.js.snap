@@ -154,7 +154,8 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
                       "busy": false,
                       "checked": false,
                       "disabled": false,
-                      "mergedDisabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
                     }
                   }
                   accessible={true}
@@ -278,7 +279,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}
@@ -371,7 +376,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}
@@ -464,7 +473,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}
@@ -557,7 +570,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}
@@ -650,7 +667,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}
@@ -743,7 +764,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}
@@ -836,7 +861,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}
@@ -929,7 +958,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}
@@ -1022,7 +1055,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}
@@ -1115,7 +1152,11 @@ exports[`renders ./components/modal/demo/basic.tsx correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           Object {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
         accessible={true}

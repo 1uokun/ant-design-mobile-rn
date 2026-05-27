@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
-import { StyleSheet, Text, View, ViewStyle } from 'react-native'
+import { DimensionValue, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import { useTheme, WithTheme, WithThemeStyles } from '../style'
 import Line from './Line'
-import { DimensionValue, DividerPropsType } from './PropsType'
+import { DividerPropsType } from './PropsType'
 import dividerStyles, { DividerStyles } from './style/index'
 
 interface DividerProps
@@ -38,24 +38,24 @@ const Divider = (props: DividerProps) => {
 
   // ================== contentStyle ==================
   const contentStyle = useMemo<ViewStyle>(() => {
-    let paddingRecord: DimensionValue[] = [0, 0, 0, 0] // [left, top, right, bottom]
-    let marginRecord: DimensionValue[] = [0, 0, 0, 0] // [left, top, right, bottom]
+    let paddingRecord: DimensionValue[] = [0, 0, 0, 0]
+    let marginRecord: DimensionValue[] = [0, 0, 0, 0]
 
     if (hasCustomMargin) {
       if (position === 'left') {
         paddingRecord = isHorizontal
           ? [0, 0, _innerPadding, 0]
           : [0, 0, 0, _innerPadding]
-        marginRecord = isHorizontal
-          ? [orientationMargin, 0, 0, 0]
-          : [0, orientationMargin, 0, 0]
+        marginRecord = (isHorizontal
+          ? [orientationMargin ?? 0, 0, 0, 0]
+          : [0, orientationMargin ?? 0, 0, 0]) as DimensionValue[]
       } else if (position === 'right') {
         paddingRecord = isHorizontal
           ? [_innerPadding, 0, 0, 0]
           : [0, _innerPadding, 0, 0]
-        marginRecord = isHorizontal
-          ? [0, 0, orientationMargin, 0]
-          : [0, 0, 0, orientationMargin]
+        marginRecord = (isHorizontal
+          ? [0, 0, orientationMargin ?? 0, 0]
+          : [0, 0, 0, orientationMargin ?? 0]) as DimensionValue[]
       } else {
         paddingRecord = isHorizontal
           ? [_innerPadding, 0, _innerPadding, 0]

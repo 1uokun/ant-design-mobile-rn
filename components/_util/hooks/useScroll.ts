@@ -17,7 +17,7 @@ export const onScrollEmit = (event: NativeSyntheticEvent<NativeScrollEvent>) =>
 export default function useScroll(
   onScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void,
 ) {
-  const onScrollRef = useRef<EmitterSubscription>()
+  const onScrollRef = useRef<EmitterSubscription | undefined>(undefined)
 
   useEffect(() => {
     onScrollRef.current = TopViewEventEmitter.addListener(

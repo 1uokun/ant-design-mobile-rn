@@ -52,7 +52,7 @@ export default class OperationContainer extends React.Component<
       button.onPress = () => {
         const res = orginPress()
         if (res && (res as any).then) {
-          // eslint-disable-next-line no-extra-semi
+           
           ;(res as any).then(() => {
             this.onClose()
           })

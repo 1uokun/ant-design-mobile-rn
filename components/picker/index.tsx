@@ -62,7 +62,7 @@ const Picker = forwardRef<PickerRef, PickerProps>((props, ref) => {
   )
 
   const onVisibleChange = useCallback(
-    (visible) => {
+    (visible: boolean) => {
       p.onVisibleChange?.(visible)
       valueProp && setInnerValue(valueProp)
     },

@@ -1,13 +1,13 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
-  process: (_, filename) => {
-    const [name, ext] = path.basename(filename).split('.');
+  process(_src, filename) {
+    const [name, ext] = path.basename(filename).split('.')
     if (ext === 'png') {
-      return `module.exports = {
-        uri: '${name}',
-      }`;
+      return {
+        code: `module.exports = { uri: '${name}' };`,
+      }
     }
-    return '';
+    return { code: 'module.exports = {};' }
   },
-};
+}

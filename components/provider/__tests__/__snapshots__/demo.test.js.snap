@@ -2,135 +2,134 @@
 
 exports[`renders ./components/provider/demo/basic.tsx correctly 1`] = `
 <View
+  collapsable={false}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
   style={
-    Array [
-      Object {
-        "marginLeft": 15,
-        "marginRight": 15,
-      },
-      undefined,
-    ]
+    Object {
+      "flex": 1,
+    }
   }
 >
   <View
-    accessibilityState={
-      Object {
-        "disabled": false,
-      }
+    style={
+      Array [
+        Object {
+          "marginLeft": 15,
+          "marginRight": 15,
+        },
+        undefined,
+      ]
     }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
   >
     <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "paddingLeft": 15,
-          },
-          undefined,
-        ]
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
       }
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
     >
       <View
         style={
           Array [
             Object {
               "alignItems": "center",
-              "borderBottomColor": "#dddddd",
-              "borderBottomWidth": 0.5,
-              "flex": 1,
+              "backgroundColor": "#ffffff",
               "flexDirection": "row",
-              "minHeight": 44,
-              "paddingRight": 15,
-              "paddingVertical": 6,
+              "flexGrow": 1,
+              "paddingLeft": 15,
             },
-            false,
-            false,
+            undefined,
           ]
         }
       >
-        <Text
-          numberOfLines={1}
-          style={
-            Object {
-              "color": "#000000",
-              "flex": 1,
-              "fontSize": 17,
-              "textAlignVertical": "center",
-            }
-          }
-        >
-          Choose language
-        </Text>
-        <Text
-          numberOfLines={1}
-          style={
-            Object {
-              "color": "#888888",
-              "fontSize": 17,
-              "maxWidth": "70%",
-              "paddingLeft": 8,
-              "textAlign": "right",
-              "textAlignVertical": "center",
-            }
-          }
-        >
-          请选择
-        </Text>
-        <Text
+        <View
           style={
             Array [
               Object {
-                "color": "#cccccc",
-                "fontFamily": "antoutline",
-                "fontSize": 22,
-                "fontStyle": "normal",
-                "fontWeight": "normal",
+                "alignItems": "center",
+                "borderBottomColor": "#dddddd",
+                "borderBottomWidth": 0.5,
+                "flex": 1,
+                "flexDirection": "row",
+                "minHeight": 44,
+                "paddingRight": 15,
+                "paddingVertical": 6,
               },
-              Object {
-                "marginLeft": 8,
-                "marginTop": 3,
-              },
+              false,
+              false,
             ]
           }
         >
-          
-        </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              Object {
+                "color": "#000000",
+                "flex": 1,
+                "fontSize": 17,
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Choose language
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              Object {
+                "color": "#888888",
+                "fontSize": 17,
+                "maxWidth": "70%",
+                "paddingLeft": 8,
+                "textAlign": "right",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            English
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#cccccc",
+                  "fontFamily": "antoutline",
+                  "fontSize": 22,
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {
+                  "marginLeft": 8,
+                  "marginTop": 3,
+                },
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
       </View>
     </View>
-  </View>
-  <View
-    style={
-      Array [
-        Object {
-          "height": 9,
-        },
-        undefined,
-      ]
-    }
-  />
-  <View
-    collapsable={false}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    style={
-      Object {
-        "flex": 1,
-        "overflow": "scroll",
+    <View
+      style={
+        Array [
+          Object {
+            "height": 9,
+          },
+          undefined,
+        ]
       }
-    }
-  >
+    />
     <View>
       <View
         style={
@@ -169,7 +168,11 @@ exports[`renders ./components/provider/demo/basic.tsx correctly 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 Object {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
               accessible={true}
@@ -317,7 +320,11 @@ exports[`renders ./components/provider/demo/basic.tsx correctly 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 Object {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
               accessible={true}

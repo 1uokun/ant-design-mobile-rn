@@ -1,4 +1,10 @@
-import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native'
+import {
+  DimensionValue,
+  ImageStyle,
+  StyleSheet,
+  TextStyle,
+  ViewStyle,
+} from 'react-native'
 import { Theme } from '../../style'
 export interface ListStyle {
   List: ViewStyle
@@ -95,7 +101,7 @@ export default (variables: Theme) =>
       textAlign: 'right',
       textAlignVertical: 'center',
       paddingLeft: variables.h_spacing_md,
-      maxWidth: variables.extra_max_width,
+      maxWidth: variables.extra_max_width as DimensionValue,
     },
     Brief: {
       minHeight: variables.font_size_icontext,

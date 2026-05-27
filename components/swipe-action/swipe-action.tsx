@@ -28,7 +28,7 @@ export const SwipeAction = React.forwardRef<Swipeable, SwipeActionProps>(
     // ======================== Swipeable renderLeftActions/renderRightActions ========================
     const renderActions = useCallback(
       (
-        progressAnimatedValue: Animated.AnimatedInterpolation,
+        progressAnimatedValue: Animated.AnimatedInterpolation<number>,
         isLeft = false,
       ) => {
         return (
@@ -45,11 +45,13 @@ export const SwipeAction = React.forwardRef<Swipeable, SwipeActionProps>(
       [close, closeOnAction, left, right, styles],
     )
     const renderLeftActions = useCallback(
-      (progressAnimatedValue) => renderActions(progressAnimatedValue, true),
+      (progressAnimatedValue: Animated.AnimatedInterpolation<number>) =>
+        renderActions(progressAnimatedValue, true),
       [renderActions],
     )
     const renderRightActions = useCallback(
-      (progressAnimatedValue) => renderActions(progressAnimatedValue, false),
+      (progressAnimatedValue: Animated.AnimatedInterpolation<number>) =>
+        renderActions(progressAnimatedValue, false),
       [renderActions],
     )
 
@@ -62,7 +64,7 @@ export const SwipeAction = React.forwardRef<Swipeable, SwipeActionProps>(
 
     // ======================== Swipeable onSwipeableOpen preventDefault ========================
     const handleSwipeableOpen = useCallback(
-      (...args) => {
+      (...args: Parameters<NonNullable<typeof onSwipeableOpen>>) => {
         preventDefault()
         onSwipeableOpen && onSwipeableOpen.apply(undefined, args)
       },

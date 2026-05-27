@@ -238,7 +238,7 @@ function InnerStepper<ValueType extends number | string>(
   }
 
   // long press automatic minus/plus
-  const timer = useRef<any>()
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const onLongPressMinus = (time = 1000) => {
     dispatch({ type: 'minus' })
     timer.current = setTimeout(

@@ -108,7 +108,9 @@ export class Tabs extends React.PureComponent<TabsProps, StateType> {
           height: containerHeight,
           width: containerWidth,
         }}
-        ref={(ref) => (this.carousel = ref)}>
+        ref={(ref) => {
+          this.carousel = ref
+        }}>
         {content}
       </Carousel>
     )

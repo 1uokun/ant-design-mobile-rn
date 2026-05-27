@@ -19,7 +19,7 @@ import SearchBarStyles, { SearchBarStyle } from './style/index'
 export interface SearchBarProps
   extends SearchBarPropsType,
     WithThemeStyles<SearchBarStyle>,
-    Omit<TextInputProps, 'onChange'> {
+    Omit<TextInputProps, 'onChange' | 'onBlur' | 'onFocus'> {
   onChangeText?: (text: string) => void
   onSubmitEditing?: (event: { nativeEvent: { text: string } }) => void
   style?: StyleProp<TextStyle>
@@ -133,7 +133,9 @@ export default class SearchBar extends React.Component<
                 editable={!disabled}
                 {...restProps}
                 style={[_styles.input, style]}
-                ref={(el) => ((this.inputRef as any) = el)}
+                ref={(el) => {
+                  this.inputRef = el
+                }}
                 value={value}
                 onChangeText={this.onChangeText}
                 onSubmitEditing={this.onSubmit}
