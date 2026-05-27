@@ -51,12 +51,18 @@ const AnimatedSkeleton: React.FC<{
     outputRange: [0, 0.36, 1, 0.36, 0],
   })
 
+  const skeletonOpacity = animationProgress.interpolate({
+    inputRange: [0, 0.18, 0.5, 0.82, 1],
+    outputRange: [1, 0.65, 0.3, 0.65, 1],
+  })
+
   return (
-    <View
+    <Animated.View
       style={[
         style,
         {
           overflow: 'hidden',
+          opacity: skeletonOpacity,
         },
       ]}
       {...restProps}
@@ -74,7 +80,7 @@ const AnimatedSkeleton: React.FC<{
           shimmerStyle,
         ]}
       />
-    </View>
+    </Animated.View>
   )
 }
 
