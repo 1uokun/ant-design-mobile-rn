@@ -53,7 +53,6 @@ export const CollapsePanelContent: FC<{
 
   const derivedHeight = useDerivedValue(() =>
     withSpring(height.value * Number(visible), {
-      restDisplacementThreshold: 0.01,
       mass: 1,
       stiffness: 200,
       damping: 25,

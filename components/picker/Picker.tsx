@@ -12,6 +12,7 @@ import { Omit } from 'utility-types'
 
 import { Keyboard } from 'react-native'
 import { getComponentLocale } from '../_util/getLocale'
+import { mergeProps } from '../_util/with-default-props'
 import { LocaleContext } from '../locale-provider'
 import { PickerColumn, PickerValue } from '../picker-view/PropsType'
 import RMCPickerView from '../picker-view/picker-view'
@@ -35,8 +36,14 @@ export interface RMCPickerProps
   handleSelect: (value: PickerValue, index: number) => void
 }
 
-const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((props, ref) => {
+const defaultProps = {
+  triggerType: 'onPress',
+  format: (labels: string[]) => labels.join(','),
+}
+
+const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((rawProps, ref) => {
   const contextDisabled = useContext(DisabledContext)
+  const props = mergeProps(defaultProps, rawProps)
   const {
     onVisibleChange,
     visible,
@@ -66,7 +73,7 @@ const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((props, ref) => {
   })
 
   const setInnerVisible = useCallback(
-    (bool) => {
+    (bool: boolean) => {
       !disabled && setInnerVisible2(bool)
     },
     [disabled, setInnerVisible2],
@@ -155,15 +162,16 @@ const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((props, ref) => {
       })
     }
     const child = children as React.ReactElement
+    const childProps = child.props as Record<string, any>
     const newChildProps = {
       value,
       extra: innerExtra || extra || _locale.extra,
       disabled,
-    } as any
+    } as Record<string, any>
     if (!disabled) {
       newChildProps[props.triggerType!] = (e: any) => {
-        if (child.props[props.triggerType!]) {
-          child.props[props.triggerType!](e)
+        if (typeof childProps[props.triggerType!] === 'function') {
+          childProps[props.triggerType!](e)
         }
         actions.toggle()
       }
@@ -207,9 +215,5 @@ const RMCPicker = forwardRef<PickerRef, RMCPickerProps>((props, ref) => {
 })
 
 RMCPicker.displayName = 'Picker'
-RMCPicker.defaultProps = {
-  triggerType: 'onPress',
-  format: (labels: string[]) => labels.join(','),
-}
 
 export default RMCPicker

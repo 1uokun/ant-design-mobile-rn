@@ -1,10 +1,14 @@
-import React from 'react'
-import { TouchableHighlight } from 'react-native'
+import React, { act } from 'react'
 import renderer from 'react-test-renderer'
 import Button from '../index'
+
 // No need to render Snapshot again, because of `./demo.test.js`
-// TODO: add tests for render props
 describe('Button', () => {
+  const pressEvent = { nativeEvent: {} }
+
+  const findButton = (wrapper) =>
+    wrapper.root.findByProps({ accessibilityRole: 'button' })
+
   describe('pressIn', () => {
     let handlePressIn
     /** @type {renderer.ReactTestRenderer} */
@@ -12,16 +16,16 @@ describe('Button', () => {
 
     beforeEach(() => {
       handlePressIn = jest.fn()
-      wrapper = renderer.create(<Button onPressIn={handlePressIn}>foo</Button>)
-      wrapper.root.findByType(TouchableHighlight).props.onPressIn()
+      act(() => {
+        wrapper = renderer.create(<Button onPressIn={handlePressIn}>foo</Button>)
+      })
+      act(() => {
+        findButton(wrapper).props.onPressIn(pressEvent)
+      })
     })
 
     it('fires pressIn event', () => {
-      expect(handlePressIn).toBeCalledWith()
-    })
-
-    it('change pressIn state', () => {
-      expect(wrapper.getInstance().state.pressIn).toBe(true)
+      expect(handlePressIn).toHaveBeenCalledWith(pressEvent)
     })
   })
 
@@ -32,19 +36,18 @@ describe('Button', () => {
 
     beforeEach(() => {
       handlePressOut = jest.fn()
-      wrapper = renderer.create(
-        <Button onPressOut={handlePressOut}>foo</Button>,
-      )
-      wrapper.getInstance().state.pressIn = true
-      wrapper.root.findByType(TouchableHighlight).props.onPressOut()
+      act(() => {
+        wrapper = renderer.create(
+          <Button onPressOut={handlePressOut}>foo</Button>,
+        )
+      })
+      act(() => {
+        findButton(wrapper).props.onPressOut(pressEvent)
+      })
     })
 
     it('fires pressOut event', () => {
-      expect(handlePressOut).toBeCalledWith()
-    })
-
-    it('set pressIn state', () => {
-      expect(wrapper.getInstance().state.pressIn).toBe(false)
+      expect(handlePressOut).toHaveBeenCalledWith(pressEvent)
     })
   })
 
@@ -52,20 +55,21 @@ describe('Button', () => {
     let handleShowUnderlay
     /** @type {renderer.ReactTestRenderer} */
     let wrapper
+
     beforeEach(() => {
       handleShowUnderlay = jest.fn()
-      wrapper = renderer.create(
-        <Button onShowUnderlay={handleShowUnderlay}>foo</Button>,
-      )
-      wrapper.root.findByType(TouchableHighlight).props.onShowUnderlay()
+      act(() => {
+        wrapper = renderer.create(
+          <Button onShowUnderlay={handleShowUnderlay}>foo</Button>,
+        )
+      })
+      act(() => {
+        findButton(wrapper).props.onPressIn(pressEvent)
+      })
     })
 
     it('fires showUnderlay event', () => {
-      expect(handleShowUnderlay).toBeCalledWith()
-    })
-
-    it('set touchIt state', () => {
-      expect(wrapper.getInstance().state.touchIt).toBe(true)
+      expect(handleShowUnderlay).toHaveBeenCalled()
     })
   })
 
@@ -76,57 +80,28 @@ describe('Button', () => {
 
     beforeEach(() => {
       handleHideUnderlay = jest.fn()
-      wrapper = renderer.create(
-        <Button onHideUnderlay={handleHideUnderlay}>foo</Button>,
-      )
-      wrapper.getInstance().state.touchIt = true
-
-      wrapper.root.findByType(TouchableHighlight).props.onHideUnderlay()
+      act(() => {
+        wrapper = renderer.create(
+          <Button onHideUnderlay={handleHideUnderlay}>foo</Button>,
+        )
+      })
+      act(() => {
+        findButton(wrapper).props.onPressOut(pressEvent)
+      })
     })
 
     it('fires hideUnderlay event', () => {
-      expect(handleHideUnderlay).toBeCalledWith()
-    })
-
-    it('change touchIt state', () => {
-      expect(wrapper.getInstance().state.touchIt).toBe(false)
+      expect(handleHideUnderlay).toHaveBeenCalled()
     })
   })
 
-  // https://github.com/airbnb/enzyme/issues/386
   describe('disabled', () => {
-    /** @type {renderer.ReactTestRenderer} */
-    let wrapper
-    const onPressIn = jest.fn()
-
-    beforeEach(() => {
-      wrapper = renderer.create(
-        <Button disabled onPressIn={onPressIn}>
-          foo
-        </Button>,
-      )
-    })
-
-    it.only('pressIn not change pressIn state', () => {
-      wrapper.root.findByType(Button).props.onPressIn()
-      expect(onPressIn).toBeCalledWith()
-    })
-
-    it('pressOut not change pressIn state', () => {
-      wrapper.getInstance().pressIn = true
-      wrapper.root.findByType(TouchableHighlight).props.onPressOut()
-      expect(wrapper.getInstance().state.pressIn).toBe(true)
-    })
-
-    it('showUnderlay not change touchIt state', () => {
-      wrapper.root.findByType(TouchableHighlight).props.onShowUnderlay()
-      expect(wrapper.getInstance().state.touchIt).toBe(false)
-    })
-
-    it('hideUnderlay not change touchIt state', () => {
-      wrapper.getInstance().state.touchIt = true
-      wrapper.root.findByType(TouchableHighlight).props.onHideUnderlay()
-      expect(wrapper.getInstance().state.touchIt).toBe(true)
+    it('sets disabled on Pressable', () => {
+      let wrapper
+      act(() => {
+        wrapper = renderer.create(<Button disabled>foo</Button>)
+      })
+      expect(findButton(wrapper).props.disabled).toBe(true)
     })
   })
 })

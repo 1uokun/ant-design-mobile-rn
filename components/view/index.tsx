@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 
 export interface ViewInterface extends ViewProps, TextProps {
-  children?: React.ReactNode | React.ReactText
+  children?: React.ReactNode | string | number
   style?: StyleProp<ViewStyle> | StyleProp<TextStyle>
 }
 class AntmView extends React.PureComponent<ViewInterface> {

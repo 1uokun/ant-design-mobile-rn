@@ -2,220 +2,237 @@
 
 exports[`renders ./components/action-sheet/demo/basic.tsx correctly 1`] = `
 <View
+  collapsable={false}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
   style={
     Object {
-      "marginTop": 30,
+      "flex": 1,
     }
   }
 >
   <View
     style={
-      Array [
-        Object {
-          "padding": 8,
-        },
-      ]
+      Object {
+        "marginTop": 30,
+      }
     }
   >
     <View
-      accessibilityRole="button"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "borderRadius": 5,
-            "borderWidth": 1,
-            "justifyContent": "center",
-          },
-          Object {
-            "height": 47,
-          },
-          Object {
-            "backgroundColor": "#ffffff",
-            "borderColor": "#dddddd",
+            "padding": 8,
           },
         ]
       }
     >
       <View
+        accessibilityRole="button"
+        accessibilityState={
+          Object {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Array [
             Object {
               "alignItems": "center",
-              "height": "100%",
+              "borderRadius": 5,
+              "borderWidth": 1,
               "justifyContent": "center",
-              "width": "100%",
             },
             Object {
-              "paddingLeft": 15,
-              "paddingRight": 15,
+              "height": 47,
             },
-            Object {},
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#dddddd",
+            },
           ]
         }
       >
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "height": "100%",
-              "justifyContent": "center",
-              "overflow": "hidden",
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "height": "100%",
+                "justifyContent": "center",
+                "width": "100%",
+              },
+              Object {
+                "paddingLeft": 15,
+                "paddingRight": 15,
+              },
+              Object {},
+            ]
           }
         >
-          <Text
+          <View
             style={
-              Array [
-                Object {
-                  "fontSize": 18,
-                },
-                Object {
-                  "color": "#000000",
-                },
-                Object {},
-              ]
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "height": "100%",
+                "justifyContent": "center",
+                "overflow": "hidden",
+              }
             }
           >
-            showActionSheet
-          </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontSize": 18,
+                  },
+                  Object {
+                    "color": "#000000",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              showActionSheet
+            </Text>
+          </View>
         </View>
       </View>
     </View>
-  </View>
-  <Text
-    style={
-      Array [
-        Object {
-          "padding": 8,
-        },
-      ]
-    }
-  >
-    clicked button: 
-    none
-  </Text>
-  <View
-    style={
-      Array [
-        Object {
-          "padding": 8,
-        },
-      ]
-    }
-  >
-    <View
-      accessibilityRole="button"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+    <Text
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "borderRadius": 5,
-            "borderWidth": 1,
-            "justifyContent": "center",
+            "padding": 8,
           },
+        ]
+      }
+    >
+      clicked button: 
+      none
+    </Text>
+    <View
+      style={
+        Array [
           Object {
-            "height": 47,
-          },
-          Object {
-            "backgroundColor": "#ffffff",
-            "borderColor": "#dddddd",
+            "padding": 8,
           },
         ]
       }
     >
       <View
+        accessibilityRole="button"
+        accessibilityState={
+          Object {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Array [
             Object {
               "alignItems": "center",
-              "height": "100%",
+              "borderRadius": 5,
+              "borderWidth": 1,
               "justifyContent": "center",
-              "width": "100%",
             },
             Object {
-              "paddingLeft": 15,
-              "paddingRight": 15,
+              "height": 47,
             },
-            Object {},
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#dddddd",
+            },
           ]
         }
       >
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "height": "100%",
-              "justifyContent": "center",
-              "overflow": "hidden",
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "height": "100%",
+                "justifyContent": "center",
+                "width": "100%",
+              },
+              Object {
+                "paddingLeft": 15,
+                "paddingRight": 15,
+              },
+              Object {},
+            ]
           }
         >
-          <Text
+          <View
             style={
-              Array [
-                Object {
-                  "fontSize": 18,
-                },
-                Object {
-                  "color": "#000000",
-                },
-                Object {},
-              ]
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "height": "100%",
+                "justifyContent": "center",
+                "overflow": "hidden",
+              }
             }
           >
-            showShareActionSheet
-          </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontSize": 18,
+                  },
+                  Object {
+                    "color": "#000000",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              showShareActionSheet
+            </Text>
+          </View>
         </View>
       </View>
     </View>
+    <Text
+      style={
+        Array [
+          Object {
+            "padding": 8,
+          },
+        ]
+      }
+    />
   </View>
-  <Text
-    style={
-      Array [
-        Object {
-          "padding": 8,
-        },
-      ]
-    }
-  >
-    
-  </Text>
 </View>
 `;

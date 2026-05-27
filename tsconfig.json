@@ -28,7 +28,8 @@
     ".dumirc.ts",
     "components/**/*",
     "components/**/*.tsx",
-    "components/**/*.ts"
+    "components/**/*.ts",
+    "typings/**/*"
   ],
   "exclude": [
     "node_modules",

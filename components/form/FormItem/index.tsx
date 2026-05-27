@@ -86,7 +86,7 @@ const MemoInput = React.memo(
 
 export interface FormItemProps<Values = any>
   extends Omit<FormItemLabelProps, 'requiredMark' | 'styles'>,
-    ListItemProps,
+    Omit<ListItemProps, 'children'>,
     RcFieldProps<Values> {
   noStyle?: boolean
   style?: StyleProp<ViewStyle>
@@ -152,7 +152,7 @@ function InternalFormItem<Values = any>(
   // ========================= MISC =========================
   // Get `noStyle` required info
   const listContext = React.useContext(ListContext)
-  const fieldKeyPathRef = React.useRef<InternalNamePath>()
+  const fieldKeyPathRef = React.useRef<InternalNamePath | undefined>(undefined)
 
   // ======================== Errors ========================
   // >>>>> Collect sub field errors

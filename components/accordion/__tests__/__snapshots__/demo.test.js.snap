@@ -107,11 +107,15 @@ exports[`renders ./components/accordion/demo/basic.tsx correctly 1`] = `
         <View
           collapsable={false}
           pointerEvents="auto"
-          style={Object {}}
+          style={
+            Object {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
         >
           <View
             collapsable={false}
-            forwardedRef={[Function]}
             onLayout={[Function]}
             style={Object {}}
           >
@@ -438,7 +442,6 @@ exports[`renders ./components/accordion/demo/basic.tsx correctly 1`] = `
         >
           <View
             collapsable={false}
-            forwardedRef={[Function]}
             onLayout={[Function]}
             style={Object {}}
           >
@@ -552,11 +555,15 @@ exports[`renders ./components/accordion/demo/basic.tsx correctly 1`] = `
         <View
           collapsable={false}
           pointerEvents="auto"
-          style={Object {}}
+          style={
+            Object {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
         >
           <View
             collapsable={false}
-            forwardedRef={[Function]}
             onLayout={[Function]}
             style={Object {}}
           >

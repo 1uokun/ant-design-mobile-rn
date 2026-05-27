@@ -27,6 +27,7 @@ export interface PropsType
 }
 
 export interface StateType {
+  _offset: { x: number; y: number }
   _leftTabUnderline: Animated.Value
   _widthTabUnderline: Animated.Value
   _containerWidth: number
@@ -51,10 +52,13 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
   _containerMeasurements: any
   _scrollView: ScrollView
   _newLineLeft: number
+  _scrollValueListenerId?: string
+  _initialized: boolean = false
 
   constructor(props: PropsType) {
     super(props)
     this.state = {
+      _offset: { x: 0, y: 0 },
       _leftTabUnderline: new Animated.Value(0),
       _widthTabUnderline: new Animated.Value(0),
       _containerWidth: WINDOW_WIDTH,
@@ -63,10 +67,61 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
   }
 
   componentDidMount() {
-    this.props.scrollValue.addListener(this.updateView)
+    this._scrollValueListenerId = this.props.scrollValue?.addListener(
+      this.updateView,
+    )
   }
 
-  updateView = (offset: any) => {
+  componentWillUnmount() {
+    if (this._scrollValueListenerId) {
+      this.props.scrollValue?.removeListener(this._scrollValueListenerId)
+    }
+    this._initialized = false
+  }
+
+  tryInitializeTabBar = () => {
+    if (
+      !this._initialized &&
+      this.props.tabs.length > 0 &&
+      this._containerMeasurements &&
+      this._tabContainerMeasurements &&
+      Object.keys(this._tabsMeasurements).length === this.props.tabs.length
+    ) {
+      this.initializeTabBar()
+      this._initialized = true
+    }
+  }
+
+  initializeTabBar = () => {
+    const { activeTab = 0, tabs } = this.props
+    this.initView(activeTab, 0, tabs.length)
+  }
+
+  initView = (position: number, pageOffset: number, tabCount: number) => {
+    const newScrollX = this.updateTabPanelOffset(position, pageOffset)
+    this.setState(
+      {
+        _offset: { x: newScrollX, y: 0 },
+      },
+      () => {
+        // web & android
+        this._scrollView?.scrollTo({ x: newScrollX, y: 0, animated: false })
+      },
+    )
+
+    if (position >= 0 && position <= tabCount - 1) {
+      const { newLineLeft, newLineRight } = this.updateTabUnderlineOffset(
+        position,
+        pageOffset,
+      )
+
+      this._newLineLeft = newLineLeft
+      this.state._leftTabUnderline.setValue(newLineLeft)
+      this.state._widthTabUnderline.setValue(newLineRight - newLineLeft)
+    }
+  }
+
+  updateView = (offset: { value: number }, animated: boolean = true) => {
     const position = Math.floor(offset.value)
     const pageOffset = offset.value % 1
     const tabCount = this.props.tabs.length
@@ -83,7 +138,7 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
       )
     ) {
       this.updateTabPanel(position, pageOffset)
-      this.updateTabUnderline(position, pageOffset, tabCount)
+      this.updateTabUnderline(position, pageOffset, tabCount, animated)
     }
   }
 
@@ -96,7 +151,7 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
     )
   }
 
-  updateTabPanel(position: number, pageOffset: number) {
+  updateTabPanelOffset = (position: number, pageOffset: number) => {
     const containerWidth = this._containerMeasurements.width
     const tabWidth = this._tabsMeasurements[position].width
     const nextTabMeasurements = this._tabsMeasurements[position + 1]
@@ -112,32 +167,53 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
       2
     newScrollX = newScrollX >= 0 ? newScrollX : 0
 
-    if (Platform.OS === 'android') {
-      this._scrollView?.scrollTo({ x: newScrollX, y: 0 })
-    } else {
-      const rightBoundScroll =
-        this._tabContainerMeasurements.width - this._containerMeasurements.width
+    if (Platform.OS !== 'android') {
+      const rightBoundScroll = Math.max(
+        0,
+        this._tabContainerMeasurements.width - this._containerMeasurements.width,
+      )
       newScrollX = newScrollX > rightBoundScroll ? rightBoundScroll : newScrollX
-      this._scrollView?.scrollTo({ x: newScrollX, y: 0 })
     }
+
+    return newScrollX
   }
 
-  updateTabUnderline(position: number, pageOffset: number, tabCount: number) {
-    if (position >= 0 && position <= tabCount - 1) {
-      const nowLeft = this._tabsMeasurements[position].left
-      const nowRight = this._tabsMeasurements[position].right
-      const nextTabLeft = this._tabsMeasurements[position + 1]?.left || 0
-      const nextTabRight = this._tabsMeasurements[position + 1]?.right || 0
+  updateTabPanel(position: number, pageOffset: number) {
+    const newScrollX = this.updateTabPanelOffset(position, pageOffset)
+    this._scrollView?.scrollTo({ x: newScrollX, y: 0 })
+  }
 
-      const newLineLeft = pageOffset * nextTabLeft + (1 - pageOffset) * nowLeft
-      const newLineRight =
-        pageOffset * nextTabRight + (1 - pageOffset) * nowRight
+  updateTabUnderlineOffset = (position: number, pageOffset: number) => {
+    const nowLeft = this._tabsMeasurements[position].left
+    const nowRight = this._tabsMeasurements[position].right
+    const nextTabLeft = this._tabsMeasurements[position + 1]?.left || 0
+    const nextTabRight = this._tabsMeasurements[position + 1]?.right || 0
+
+    const newLineLeft = pageOffset * nextTabLeft + (1 - pageOffset) * nowLeft
+    const newLineRight = pageOffset * nextTabRight + (1 - pageOffset) * nowRight
+
+    return { newLineLeft, newLineRight }
+  }
+
+  updateTabUnderline(
+    position: number,
+    pageOffset: number,
+    tabCount: number,
+    animated: boolean,
+  ) {
+    if (position >= 0 && position <= tabCount - 1) {
+      const { newLineLeft, newLineRight } = this.updateTabUnderlineOffset(
+        position,
+        pageOffset,
+      )
 
       if (this._newLineLeft === newLineLeft) {
         return
       }
+
       this._newLineLeft = newLineLeft
-      if (this.props.animated) {
+
+      if (this.props.animated && this._initialized && animated) {
         Animated.timing(this.state._leftTabUnderline, {
           toValue: newLineLeft,
           useNativeDriver: false,
@@ -165,7 +241,7 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
     tab: TabData,
     index: number,
     width: number,
-    onLayoutHandler: any,
+    onLayoutHandler: (event: LayoutChangeEvent) => void,
     styles: ReturnType<typeof TabBarStyles>,
     theme: Theme,
   ) => {
@@ -216,18 +292,24 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
     )
   }
 
-  measureTab = (page: number, event: any) => {
+  measureTab = (page: number, event: LayoutChangeEvent) => {
     const { x, width, height } = event.nativeEvent.layout
     this._tabsMeasurements[page] = { left: x, right: x + width, width, height }
-    this.updateView({ value: this.props.scrollValue._value })
+    this.tryInitializeTabBar()
+    if (this._initialized && page === this.props.activeTab) {
+      this.updateView({ value: this.props.scrollValue._value }, false)
+    }
   }
 
   getTabs = (styles: TabBarStyle, theme: Theme) => {
     const { tabs, page = 0 } = this.props
     return tabs.map((name, index) => {
-      let tab = { title: name } as TabData
-      if (tabs.length - 1 >= index) {
-        tab = tabs[index]
+      let tab: TabData =
+        typeof name === 'object' && name !== null && 'title' in name
+          ? (name as TabData)
+          : { title: name }
+      if (tabs.length - 1 >= index && typeof tabs[index] === 'object') {
+        tab = tabs[index] as TabData
       }
       const tabWidth = this.state._containerWidth / Math.min(page, tabs.length)
 
@@ -302,7 +384,8 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
                 scrollsToTop={false}
                 scrollEnabled={tabs.length > page}
                 keyboardShouldPersistTaps={keyboardShouldPersistTaps}
-                renderToHardwareTextureAndroid>
+                renderToHardwareTextureAndroid
+                contentOffset={this.state._offset}>
                 <View
                   style={[
                     styles.tabs,
@@ -328,13 +411,15 @@ export class DefaultTabBar extends React.PureComponent<PropsType, StateType> {
     // if (width < WINDOW_WIDTH) {
     // width = WINDOW_WIDTH;
     // }
+    this.tryInitializeTabBar()
     this.setState({ _tabContainerWidth: width })
-    this.updateView({ value: this.props.scrollValue._value })
+    this.updateView({ value: this.props.scrollValue._value }, false)
   }
 
   onContainerLayout = (e: LayoutChangeEvent) => {
     this._containerMeasurements = e.nativeEvent.layout
     this.setState({ _containerWidth: this._containerMeasurements.width })
-    this.updateView({ value: this.props.scrollValue._value })
+    this.tryInitializeTabBar()
+    this.updateView({ value: this.props.scrollValue._value }, false)
   }
 }

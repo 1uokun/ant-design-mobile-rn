@@ -1,5 +1,4 @@
-const libDir = process.env.LIB_DIR;
-const { defaults: tsjPreset } = require('ts-jest/presets');
+const libDir = process.env.LIB_DIR
 
 const transformPackages = [
   '@react-native',
@@ -9,18 +8,21 @@ const transformPackages = [
   '@bang88/react-native-ultimate-listview',
   '@react-native-community',
   'react-native-gesture-handler',
-  'react-native-reanimated'
-];
+  'react-native-reanimated',
+  'react-native-worklets',
+]
 
 module.exports = {
-  "preset": "react-native",
-  "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
-  "setupFiles": ["./jestSetup.js"],
+  preset: 'react-native',
+  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+  setupFiles: ['./jestSetup.js'],
+  moduleNameMapper: {
+    '^@ant-design/react-native/lib/(.*)$': '<rootDir>/components/$1',
+  },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testPathIgnorePatterns: ['/node_modules/', '_site', 'site'],
   transform: {
-    ...tsjPreset.transform,
-    '^.+\\.js$': '<rootDir>/node_modules/react-native/jest/preprocessor.js',
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
     '\\.png': '<rootDir>/tests/imageStub.js',
   },
   testRegex: libDir === 'dist' ? 'demo\\.test\\.js$' : '.*\\.test\\.js$',
@@ -31,11 +33,8 @@ module.exports = {
   transformIgnorePatterns: [
     `node_modules/(?!(${transformPackages.join('|')})/)`,
   ],
-
-  globals: {
-    'ts-jest': {
-      babelConfig: true,
-      tsConfig: 'tsconfig.test.json',
-    },
+  // Match legacy snapshots: `Array [`, `Object {` instead of `[`, `{`.
+  snapshotFormat: {
+    printBasicPrototype: true,
   },
-};
+}

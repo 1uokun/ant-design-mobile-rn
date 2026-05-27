@@ -1,6 +1,6 @@
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
 import React, { forwardRef, memo, useContext, useMemo, useRef } from 'react'
-import { Text, TouchableHighlight } from 'react-native'
+import { Text } from 'react-native'
 import List from '../list/index'
 import DisabledContext from '../provider/DisabledContext'
 import { WithTheme } from '../style'
@@ -8,7 +8,9 @@ import { RadioForwardedRef, RadioItemProps } from './PropsType'
 import Radio from './Radio'
 import RadioStyles from './style/index'
 
-const RadioItem = forwardRef<TouchableHighlight, RadioItemProps>(
+type ListItemRef = React.ElementRef<typeof List.Item>
+
+const RadioItem = forwardRef<ListItemRef, RadioItemProps>(
   (props, ref) => {
     const contextDisabled = useContext(DisabledContext)
     const {

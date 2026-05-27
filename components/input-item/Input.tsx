@@ -52,7 +52,9 @@ class Input extends React.Component<TextInputProps, any> {
   render() {
     return (
       <TextInput
-        ref={(el) => ((this.inputRef as any) = el)}
+        ref={(el) => {
+          this.inputRef = el
+        }}
         underlineColorAndroid="transparent"
         {...this.props}
       />

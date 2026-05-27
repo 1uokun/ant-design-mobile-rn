@@ -29,7 +29,7 @@ export const CustomSyntheticEvent = {
 export default function useClickAway(
   onClickAway: (event: GestureResponderEvent) => void,
 ) {
-  const onClickAwayRef = useRef<EmitterSubscription>()
+  const onClickAwayRef = useRef<EmitterSubscription | undefined>(undefined)
 
   useEffect(() => {
     onClickAwayRef.current = TopViewEventEmitter.addListener(

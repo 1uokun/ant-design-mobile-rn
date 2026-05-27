@@ -3,8 +3,7 @@
 ## Environment
 
 ```
-node = 16.20.0+
-npm = 8.19.4+
+node = 22.22.1+
 ```
 
 ## Code convention for @ant-design/react-native
@@ -24,10 +23,10 @@ $ npm run lint
 ├── components              components source code
 ├── development.xxx.md      development document
 ├── docs                    other docs
+├── .dumi                   offical website source code
 ├── example                 Expo demo project source code
 ├── rn-kitchen-sink         RN demo project source code
 ├── scripts                 scripts for development
-├── site                    offical website source code
 ├── tests                   test code
 ├── tsconfig.json           TypeScript config
 ├── typings                 mistake defined for TypeScript
@@ -103,14 +102,14 @@ exports.demo = BasicButtonExample;
 
  - **Running On Expo**
 
-> node >= 18
+> node >= 22
 
 ```bash
 # go to expo example folder
 cd example
 
 # install dependencies
-npx expo install
+yarn
 
 # start expo
 npm start

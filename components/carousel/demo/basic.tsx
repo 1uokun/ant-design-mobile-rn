@@ -38,7 +38,9 @@ export default class BasicCarouselExample extends React.Component<any, any> {
             autoplay
             infinite
             afterChange={this.onHorizontalSelectedIndexChange}
-            ref={(ref) => (this.carousel = ref)}>
+            ref={(ref) => {
+              this.carousel = ref
+            }}>
             <View
               style={[styles.containerHorizontal, { backgroundColor: 'red' }]}>
               <Text>Carousel 1</Text>

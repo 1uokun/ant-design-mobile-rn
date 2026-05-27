@@ -9,6 +9,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native'
+import { mergeProps } from '../_util/with-default-props'
 import Icon from '../icon'
 import DisabledContext from '../provider/DisabledContext'
 import { useTheme } from '../style'
@@ -34,11 +35,14 @@ const defaultProps = {
   onLongPress: () => {},
 }
 
+type TouchableHighlightRef = React.ElementRef<typeof TouchableHighlight>
+
 const InternalListItem: React.ForwardRefRenderFunction<
-  TouchableHighlight,
+  TouchableHighlightRef,
   ListItemProps
-> = (props, ref) => {
+> = (rawProps, ref) => {
   const contextDisabled = React.useContext(DisabledContext)
+  const props = mergeProps(defaultProps, rawProps)
   const {
     styles,
     children,
@@ -106,14 +110,15 @@ const InternalListItem: React.ForwardRefRenderFunction<
       )
     }
     if (React.isValidElement(children)) {
-      if (typeof children.props.children === 'function') {
+      const childProps = children.props as Record<string, unknown>
+      if (typeof childProps.children === 'function') {
         return <AntmView style={[itemStyles.Content]}>{children}</AntmView>
       }
       return (
         <AntmView
           children={children}
-          {...children.props}
-          style={[itemStyles.Content, children.props.style]}
+          {...childProps}
+          style={[itemStyles.Content, childProps.style as ViewStyle]}
         />
       )
     }
@@ -156,11 +161,12 @@ const InternalListItem: React.ForwardRefRenderFunction<
       )
     }
     if (React.isValidElement(extra)) {
-      if (typeof extra.props.children === 'function') {
+      const extraProps = extra.props as Record<string, unknown>
+      if (typeof extraProps.children === 'function') {
         return <AntmView style={[itemStyles.Extra]}>{extra}</AntmView>
       }
 
-      const viewProps = { ...(extra.props ?? {}) } as Record<string, any>
+      const viewProps = { ...extraProps } as Record<string, any>
       if ('ref' in viewProps) {
         delete viewProps.ref
       }
@@ -169,7 +175,7 @@ const InternalListItem: React.ForwardRefRenderFunction<
         <AntmView
           children={extra}
           {...viewProps}
-          style={[itemStyles.Extra, extra.props.style]}
+          style={[itemStyles.Extra, extraProps.style as ViewStyle]}
         />
       )
     }
@@ -238,15 +244,13 @@ const InternalListItem: React.ForwardRefRenderFunction<
   )
 }
 
-const ListItem = React.forwardRef<TouchableHighlight, ListItemProps>(
+const ListItem = React.forwardRef<TouchableHighlightRef, ListItemProps>(
   InternalListItem,
 ) as ((
   props: React.PropsWithChildren<ListItemProps> &
-    React.RefAttributes<TouchableHighlight>,
+    React.RefAttributes<TouchableHighlightRef>,
 ) => React.ReactElement) &
-  Pick<React.FC, 'displayName' | 'defaultProps'>
-
-ListItem.defaultProps = defaultProps
+  Pick<React.FC, 'displayName'>
 
 ListItem.displayName = 'ListItem'
 

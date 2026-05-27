@@ -1,5 +1,12 @@
 import React, { isValidElement } from 'react'
-import { Image, Text, TouchableWithoutFeedback, View } from 'react-native'
+import {
+  Image,
+  ImageRequireSource,
+  ImageURISource,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native'
 import Icon, { IconProps } from '../icon'
 import { TabBarItemProps } from './PropsType'
 
@@ -50,7 +57,10 @@ export default class TabBarItem extends React.Component<TabBarItemProps, any> {
                 source
               )
             ) : (
-              <Image source={source} style={[styles.barIcon, iconStyle]} />
+              <Image
+                source={source as ImageURISource | ImageRequireSource}
+                style={[styles.barIcon, iconStyle]}
+              />
             )}
             {badgeDom}
           </View>

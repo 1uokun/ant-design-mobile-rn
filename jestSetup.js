@@ -1,9 +1,39 @@
-import 'react-native-gesture-handler/jestSetup'
+import 'react-native-gesture-handler/jestSetup.js'
 
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+jest.mock('react-native-reanimated', () => {
+  const React = require('react')
+  const { View } = require('react-native')
 
-jest.mock('react-native', () => {
-  const RN = jest.requireActual('react-native')
-  RN.NativeModules.RNCCameraRollPermissionModule = {}
-  return RN
+  const createAnimatedComponent = (Component) => Component
+
+  return {
+    __esModule: true,
+    default: {
+      View,
+      createAnimatedComponent,
+    },
+    View,
+    createAnimatedComponent,
+    useSharedValue: (init) => ({ value: init }),
+    useAnimatedStyle: (factory) => factory(),
+    useDerivedValue: (factory) => ({ value: factory() }),
+    withTiming: (value) => value,
+    withSpring: (value) => value,
+    withDecay: (value) => value,
+    runOnJS: (fn) => fn,
+    runOnUI: (fn) => fn,
+    useAnimatedReaction: () => {},
+    useFrameCallback: () => {},
+    Easing: {
+      linear: (t) => t,
+      ease: (t) => t,
+      bezier: () => ({ factory: () => (t) => t }),
+    },
+    FadeIn: {},
+    FadeOut: {},
+    Layout: {},
+  }
 })
+
+const { NativeModules } = require('react-native')
+NativeModules.RNCCameraRollPermissionModule = {}

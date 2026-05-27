@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react'
 import { StyleProp, TextStyle } from 'react-native'
 
 export interface ListPropsType {
-  renderHeader?: (() => React.ReactType) | string | React.ReactElement
-  renderFooter?: (() => React.ReactType) | string | React.ReactElement
+  renderHeader?: React.ReactElement | string | (() => React.ReactElement)
+  renderFooter?: React.ReactElement | string | (() => React.ReactElement)
   children?: false | React.ReactElement | React.ReactElement[]
 }
 

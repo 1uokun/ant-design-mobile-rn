@@ -3,6 +3,13 @@
   "compilerOptions": {
     "jsx": "react",
     "target": "es5",
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "include": [
+    "components/**/*",
+    "tests/**/*",
+    "typings/**/*"
+  ]
 }

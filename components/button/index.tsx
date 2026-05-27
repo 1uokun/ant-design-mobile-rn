@@ -172,7 +172,7 @@ const Button: React.FC<ButtonProps> = (props) => {
                   />
                 ) : null}
                 <AntmView style={getDynamicTextStyle(pressIn, _styles)}>
-                  {children}
+                  {typeof children === 'function' ? null : children}
                 </AntmView>
               </View>
             </View>

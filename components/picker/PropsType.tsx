@@ -10,7 +10,7 @@ import { PickerStyle } from './style'
 
 export interface PickerPropsType
   extends PickerViewPropsType,
-    Omit<PopupPickerProps, 'onOk' | 'styles'> {
+    Omit<PopupPickerProps, 'onOk' | 'styles' | 'children'> {
   onOk?: (value: PickerValue[], extend: PickerValueExtend) => void
   onPickerChange?: (value: PickerValue[], index: number) => void
   onVisibleChange?: (visible: boolean) => void

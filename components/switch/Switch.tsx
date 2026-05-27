@@ -4,6 +4,7 @@ import * as React from 'react'
 import {
   Animated,
   Easing,
+  LayoutChangeEvent,
   Pressable,
   StyleProp,
   View,
@@ -66,7 +67,7 @@ const AntmSwitch = (props: SwitchProps) => {
 
   // switch height measure
   const [itemHeight, setHeight] = React.useState<number>(31)
-  const wrapperMeasure = React.useCallback((e) => {
+  const wrapperMeasure = React.useCallback((e: LayoutChangeEvent) => {
     setHeight(e.nativeEvent.layout.height)
   }, [])
 

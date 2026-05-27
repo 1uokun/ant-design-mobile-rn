@@ -52,7 +52,9 @@ const InternalInput: React.ForwardRefRenderFunction<TextInput, InputProps> = (
     styles: props.styles,
     themeStyles,
   })
-  const timer = React.useRef<any>()
+  const timer = React.useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  )
   const [focus, setFocus] = React.useState<boolean>()
 
   React.useEffect(() => {
@@ -81,7 +83,9 @@ const InternalInput: React.ForwardRefRenderFunction<TextInput, InputProps> = (
 
   // clone TextInput SyntheticEvent
   // TODO: web better refer to https://github.com/react-component/input/blob/master/src/utils/commonUtils.ts#L13
-  const cloneEventRef = useRef<any>()
+  const cloneEventRef = useRef<
+    NativeSyntheticEvent<TextInputChangeEventData> | undefined
+  >(undefined)
   const resolveOnChange = (
     text: string,
     e?: NativeSyntheticEvent<TextInputChangeEventData>,
@@ -98,7 +102,7 @@ const InternalInput: React.ForwardRefRenderFunction<TextInput, InputProps> = (
 
   // Push value to controlled
   const pushInputValue = useCallback(
-    (value) => {
+    (value: string) => {
       resolveOnChange(value, cloneEventRef.current, props.onChange)
       props.onChangeText?.(value)
       setInnerValue(value)

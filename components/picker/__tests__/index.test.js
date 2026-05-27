@@ -1,7 +1,4 @@
-/**
- * @jest-environment jsdom
- */
-import React from 'react'
+import React, { act } from 'react'
 import { Text } from 'react-native'
 import renderer from 'react-test-renderer'
 import { Picker, Provider } from '../../'
@@ -34,16 +31,21 @@ describe('Picker', () => {
           ],
         },
       ]
-      const wrapper = renderer.create(
-        <Provider>
-          <Picker data={data} cols={3} onChange={onChange}>
-            <Text onPress={onPress} testID={'button'}>
-              省市选择
-            </Text>
-          </Picker>
-        </Provider>,
-      )
-      wrapper.root.findByType(Text).props.onPress()
+      let wrapper
+      act(() => {
+        wrapper = renderer.create(
+          <Provider>
+            <Picker data={data} cols={3} onChange={onChange}>
+              <Text onPress={onPress} testID={'button'}>
+                省市选择
+              </Text>
+            </Picker>
+          </Provider>,
+        )
+      })
+      act(() => {
+        wrapper.root.findByType(Text).props.onPress()
+      })
       expect(wrapper).toMatchSnapshot()
     })
 

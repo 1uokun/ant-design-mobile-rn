@@ -30,7 +30,9 @@ const Marks: FC<MarksProps> = ({ marks, max, min, styles }) => {
           if (!markPoint && markPoint !== 0) {
             return null
           }
-          const style = { left: `${((point - min) / range) * 100}%` }
+          const style = {
+            left: `${((point - min) / range) * 100}%`,
+          } as const
           return (
             <View style={[{ position: 'absolute' }, style]} key={point}>
               <AntmView style={styles.markText}>{markPoint}</AntmView>

@@ -107,7 +107,7 @@ export default class Progress extends React.Component<ProgressProps, any> {
             position === 'fixed' ? { position: 'absolute', top: 0 } : {},
             !unfilled ? { backgroundColor: 'transparent' } : {},
             style,
-          ] as ViewStyle
+          ] as unknown as ViewStyle
 
           return (
             <View onLayout={this.onLayout} style={outerStyle}>

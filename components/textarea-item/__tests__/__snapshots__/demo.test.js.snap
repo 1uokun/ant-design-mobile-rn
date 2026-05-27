@@ -409,6 +409,15 @@ exports[`renders ./components/textarea-item/demo/basic.tsx correctly 1`] = `
             underlineColorAndroid="transparent"
           />
           <View
+            accessibilityState={
+              Object {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
             accessible={true}
             focusable={true}
             onClick={[Function]}

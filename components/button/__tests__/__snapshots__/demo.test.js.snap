@@ -26,7 +26,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -119,7 +123,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -219,7 +227,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -312,7 +324,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -411,7 +427,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -504,7 +524,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -603,7 +627,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -696,7 +724,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -789,7 +821,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -872,7 +908,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -965,7 +1005,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}
@@ -1072,7 +1116,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
       accessibilityRole="button"
       accessibilityState={
         Object {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
         }
       }
       accessible={true}
@@ -1155,7 +1203,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
       accessibilityRole="button"
       accessibilityState={
         Object {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": true,
+          "expanded": undefined,
+          "selected": undefined,
         }
       }
       accessible={true}
@@ -1244,7 +1296,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
       accessibilityRole="button"
       accessibilityState={
         Object {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
         }
       }
       accessible={true}
@@ -1338,7 +1394,11 @@ exports[`renders ./components/button/demo/basic.tsx correctly 1`] = `
     accessibilityRole="button"
     accessibilityState={
       Object {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
     accessible={true}

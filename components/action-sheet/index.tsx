@@ -13,7 +13,9 @@ export default {
     const key = Portal.add(
       <ActionSheetAndroidContainer
         visible
-        ref={(ref) => (instance = ref)}
+        ref={(ref) => {
+          instance = ref
+        }}
         onAnimationEnd={(visible: boolean) => {
           if (!visible) {
             Portal.remove(key)

@@ -13,7 +13,7 @@ export interface TagStyle {
   activeText: TextStyle
   disabledWrap: ViewStyle
   disabledText: TextStyle
-  close: ViewStyle
+  close: TextStyle
 }
 
 export default (theme: Theme) =>

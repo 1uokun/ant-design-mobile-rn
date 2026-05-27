@@ -1,32 +1,41 @@
 import React, { ClassAttributes, ReactElement, memo, useCallback } from 'react'
+import { LayoutChangeEvent } from 'react-native'
+
+type ChildElement = ReactElement & {
+  props: {
+    onLayout?: (e: LayoutChangeEvent) => void
+    [key: string]: unknown
+  }
+}
 
 export default memo(
   (props: {
     children: ReactElement & ClassAttributes<ReactElement>
-    setReference: (el: any) => void
+    setReference: (el: unknown) => void
     onLayout: () => void
     trigger: string
-    onTrigger: (e: any) => void
+    onTrigger: (e: unknown) => void
   }) => {
-    const childElement = React.Children.only(props.children)
+    const childElement = React.Children.only(props.children) as ChildElement
 
-    // onLayout to get ref target
     const onLayout = useCallback(
-      (e) => {
+      (e: LayoutChangeEvent) => {
         if (typeof childElement.props.onLayout === 'function') {
           childElement.props.onLayout(e)
         }
-        props.setReference?.(e.target || e.nativeEvent.target)
+        props.setReference?.(
+          (e.nativeEvent as { target?: unknown }).target ?? e.nativeEvent,
+        )
         props.onLayout()
       },
       [childElement.props, props],
     )
 
-    // trigger event
     const onTrigger = useCallback(
-      (e) => {
-        if (typeof childElement.props[props.trigger] === 'function') {
-          childElement.props[props.trigger](e)
+      (e: unknown) => {
+        const triggerHandler = childElement.props[props.trigger]
+        if (typeof triggerHandler === 'function') {
+          triggerHandler(e)
         }
         props.onTrigger(e)
       },
