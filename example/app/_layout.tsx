@@ -1,7 +1,7 @@
-import { Icon, Provider } from '@ant-design/react-native'
+import { Button, Icon, Provider } from '@ant-design/react-native'
 import { useFonts } from 'expo-font'
 import * as Haptics from 'expo-haptics'
-import { Stack } from 'expo-router'
+import { Stack, usePathname, useRouter } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import React, { useCallback, useState } from 'react'
 import { Platform } from 'react-native'
@@ -16,9 +16,37 @@ function RootNavigator() {
   const [theme, setTheme] = useState(null)
   const [currentTheme, setCurrentTheme] = useState(null)
 
-  const changeTheme = (nextTheme: typeof theme, nextCurrentTheme: typeof currentTheme) => {
+  const changeTheme = (
+    nextTheme: typeof theme,
+    nextCurrentTheme: typeof currentTheme,
+  ) => {
     setTheme(nextTheme)
     setCurrentTheme(nextCurrentTheme)
+  }
+
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const headerLeft = ({ canGoBack }: { canGoBack: boolean }) => {
+    if (pathname === '/') {
+      return null
+    }
+    return (
+      <Button
+        type="ghost"
+        styles={{
+          wrapperStyle: { borderWidth: 0 },
+        }}
+        onPress={() => {
+          if (canGoBack) {
+            router.back()
+          } else {
+            router.replace('/')
+          }
+        }}>
+        <Icon name="arrow-left" />
+      </Button>
+    )
   }
 
   return (
@@ -27,9 +55,7 @@ function RootNavigator() {
         screenOptions={{
           headerStyle: { backgroundColor: 'black' },
           headerTintColor: 'white',
-          ...(Platform.OS === 'web'
-            ? { headerBackImage: () => <Icon name="arrow-left" /> }
-            : {}),
+          ...(Platform.OS === 'web' ? { headerLeft: headerLeft as any } : {}),
         }}>
         <Stack.Screen
           name="index"

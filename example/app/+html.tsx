@@ -1,0 +1,31 @@
+import { ScrollViewStyleReset } from 'expo-router/html'
+import type { PropsWithChildren } from 'react'
+
+export default function Root({ children }: PropsWithChildren) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function () {
+  var pathname = window.location.pathname;
+  if (!pathname || !pathname.endsWith('/index.html')) return;
+  var search = window.location.search || '';
+  var hash = window.location.hash || '';
+  var target = pathname.slice(0, -'index.html'.length) || '/';
+  window.location.replace(target + search + hash);
+})();`,
+          }}
+        />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+        />
+        <ScrollViewStyleReset />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+}
