@@ -11,7 +11,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "build-web": "expo export -p web",
+    "build-web": "EXPO_WEB_OUTPUT=static expo export -p web",
+    "deploy": "npm run build-web && gh-pages -d dist --nojekyll",
     "publish": "eas update",
     "prettify": "prettier --write .  --config ./.prettierrc",
     "lint": "expo lint"
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
+    "gh-pages": "^6.3.0",
     "typescript": "~5.9.2",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0"

@@ -17,7 +17,7 @@
     "newArchEnabled": true,
     "plugins": ["expo-router"],
     "experiments": {
-      "baseUrl": "https://1uokun.github.io/ant-design-mobile-rn/",
+      "baseUrl": "/ant-design-mobile-rn",
       "tsconfigPaths": true
     },
     "web": {
