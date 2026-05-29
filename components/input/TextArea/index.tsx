@@ -23,6 +23,8 @@ const TextArea = forwardRef<TextInput, TextAreaProps>((props, ref) => {
     return [0, 0]
   }, [autoSize])
 
+  // ios 必须在受控模式下 autoSize 才能生效
+  const [value, onChangeText] = useState(restProps.value)
   // ============================== onLayout ==============================
   const [lineHeight, setLineHeight] = useState(0)
   const [firstLayoutHeight, setFirstLayoutHeight] = useState(0)
@@ -65,22 +67,31 @@ const TextArea = forwardRef<TextInput, TextAreaProps>((props, ref) => {
       }
     }
 
+    // https://github.com/ant-design/ant-design-mobile-rn/issues/1471
+    const controlledMode =
+      restProps.value === undefined || restProps.value === null
+        ? { onChangeText, value }
+        : {}
+
     // `autoSize={{minRows:2,maxRows:5}}`
     return {
       // `autoSize={{maxRows:5}}`
       maxHeight: maxRows > 0 ? lineHeight * maxRows + padding : undefined,
       // `autoSize={{minRows:2}}`
       minHeight: minRows > 0 ? lineHeight * minRows + padding : undefined,
+      ...controlledMode,
     }
   }, [
-    autoSize,
-    firstLayoutHeight,
     lineHeight,
+    firstLayoutHeight,
+    autoSize,
+    restProps.value,
+    value,
     maxRows,
     minRows,
-    numberOfLines,
-    onContentSizeChange,
     onLayout,
+    onContentSizeChange,
+    numberOfLines,
     rows,
   ])
 
