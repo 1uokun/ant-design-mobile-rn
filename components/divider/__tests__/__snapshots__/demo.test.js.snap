@@ -825,12 +825,10 @@ exports[`renders ./components/divider/demo/basic.tsx correctly 1`] = `
                   }
                 >
                   <View
-                    onLayout={[Function]}
                     style={
                       Object {
-                        "alignItems": "center",
                         "flex": 1,
-                        "flexDirection": "row",
+                        "height": 0.5,
                         "overflow": "hidden",
                       }
                     }
@@ -838,11 +836,10 @@ exports[`renders ./components/divider/demo/basic.tsx correctly 1`] = `
                     <View
                       style={
                         Object {
-                          "backgroundColor": "#d85140",
-                          "height": 0.5,
-                          "marginLeft": 0,
-                          "marginRight": 1,
-                          "width": 4,
+                          "borderColor": "#d85140",
+                          "borderStyle": "dashed",
+                          "borderWidth": 0.5,
+                          "height": 0,
                         }
                       }
                     />
@@ -2834,12 +2831,10 @@ exports[`renders ./components/divider/demo/basic.tsx correctly 1`] = `
                   }
                 >
                   <View
-                    onLayout={[Function]}
                     style={
                       Object {
-                        "alignItems": "center",
                         "flex": 1,
-                        "flexDirection": "row",
+                        "height": 1,
                         "overflow": "hidden",
                       }
                     }
@@ -2847,11 +2842,10 @@ exports[`renders ./components/divider/demo/basic.tsx correctly 1`] = `
                     <View
                       style={
                         Object {
-                          "backgroundColor": "#c6c6c6",
-                          "height": 1,
-                          "marginLeft": 0,
-                          "marginRight": 1,
-                          "width": 4,
+                          "borderColor": "#c6c6c6",
+                          "borderStyle": "dashed",
+                          "borderWidth": 1,
+                          "height": 0,
                         }
                       }
                     />

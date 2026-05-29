@@ -1,4 +1,4 @@
-import React, { forwardRef, memo, useMemo, useState } from 'react'
+import React, { forwardRef, memo, useCallback, useMemo, useState } from 'react'
 import { TextInput } from 'react-native'
 import Input from '../Input'
 import { TextAreaProps } from '../PropsType'
@@ -11,6 +11,7 @@ const TextArea = forwardRef<TextInput, TextAreaProps>((props, ref) => {
     numberOfLines,
     onLayout,
     onContentSizeChange,
+    onChangeText: onChangeTextProp,
     ...restProps
   } = props
 
@@ -23,8 +24,28 @@ const TextArea = forwardRef<TextInput, TextAreaProps>((props, ref) => {
     return [0, 0]
   }, [autoSize])
 
-  // ios 必须在受控模式下 autoSize 才能生效
-  const [value, onChangeText] = useState(restProps.value)
+  /**
+   * iOS 下 TextInput 的 autoSize 在非受控模式下不会正确触发高度更新，
+   * 因此需要在开启 autoSize 时，内部转成受控模式。
+   */
+  const isUncontrolled =
+    restProps.value === undefined || restProps.value === null
+
+  const [innerValue, setInnerValue] = useState(
+    restProps.defaultValue?.toString?.() || '',
+  )
+
+  const handleChangeText = useCallback(
+    (text: string) => {
+      onChangeTextProp?.(text)
+
+      if (autoSize && isUncontrolled) {
+        setInnerValue(text)
+      }
+    },
+    [autoSize, isUncontrolled, onChangeTextProp],
+  )
+
   // ============================== onLayout ==============================
   const [lineHeight, setLineHeight] = useState(0)
   const [firstLayoutHeight, setFirstLayoutHeight] = useState(0)
@@ -38,7 +59,7 @@ const TextArea = forwardRef<TextInput, TextAreaProps>((props, ref) => {
   }, [restProps.placeholder])
 
   // ============================== rest TextAreaProps ==============================
-  const restTextAreaProps: TextAreaProps = useMemo(() => {
+  const restTextAreaProps: Partial<TextAreaProps> = useMemo(() => {
     if (lineHeight === 0 || firstLayoutHeight === 0) {
       return {
         onLayout: (e) => {
@@ -68,9 +89,12 @@ const TextArea = forwardRef<TextInput, TextAreaProps>((props, ref) => {
     }
 
     // https://github.com/ant-design/ant-design-mobile-rn/issues/1471
-    const controlledMode =
-      restProps.value === undefined || restProps.value === null
-        ? { onChangeText, value }
+    const autoSizeProps: Partial<TextAreaProps> =
+      isUncontrolled
+        ? {
+            value: innerValue,
+            onChangeText: handleChangeText,
+          }
         : {}
 
     // `autoSize={{minRows:2,maxRows:5}}`
@@ -79,19 +103,20 @@ const TextArea = forwardRef<TextInput, TextAreaProps>((props, ref) => {
       maxHeight: maxRows > 0 ? lineHeight * maxRows + padding : undefined,
       // `autoSize={{minRows:2}}`
       minHeight: minRows > 0 ? lineHeight * minRows + padding : undefined,
-      ...controlledMode,
+      ...autoSizeProps,
     }
   }, [
-    lineHeight,
-    firstLayoutHeight,
     autoSize,
-    restProps.value,
-    value,
+    firstLayoutHeight,
+    handleChangeText,
+    innerValue,
+    isUncontrolled,
+    lineHeight,
     maxRows,
     minRows,
-    onLayout,
-    onContentSizeChange,
     numberOfLines,
+    onContentSizeChange,
+    onLayout,
     rows,
   ])
 
@@ -100,8 +125,9 @@ const TextArea = forwardRef<TextInput, TextAreaProps>((props, ref) => {
       themeStyles={TextAreaStyle}
       {...restProps}
       {...restTextAreaProps}
-      multiline={true}
+      multiline
       placeholder={placeholder}
+      onChangeText={handleChangeText}
       ref={ref}
     />
   )
